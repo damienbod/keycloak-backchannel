@@ -2,10 +2,10 @@ using Aspire.Hosting;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-var adminUsername = builder.AddParameter("adminUsername");
-var adminPassword = builder.AddParameter("adminPassword", secret: true);
+var userName = builder.AddParameter("userName");
+var password = builder.AddParameter("password", secret: true);
 
-var keycloak = builder.AddKeycloak("keycloak", 8081, adminUsername, adminPassword)
+var keycloak = builder.AddKeycloakContainer("keycloak", userName: userName, password: password, port: 8081)
     .WithDataVolume();
 
 var apiService = builder.AddProject<Projects.Idp_ApiService>("apiservice")
