@@ -5,7 +5,7 @@ var builder = DistributedApplication.CreateBuilder(args);
 var adminUsername = builder.AddParameter("adminUsername");
 var adminPassword = builder.AddParameter("adminPassword", secret: true);
 
-var keycloak = builder.AddKeycloak("keycloak", 8080)
+var keycloak = builder.AddKeycloak("keycloak", 8081, adminUsername, adminPassword)
     .WithDataVolume();
 
 var apiService = builder.AddProject<Projects.Idp_ApiService>("apiservice")
