@@ -12,6 +12,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Idp.Web", "Idp.Web\Idp.Web.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Idp.Keycloak.ServiceDefaults", "Idp.Keycloak\Idp.Keycloak.ServiceDefaults\Idp.Keycloak.ServiceDefaults.csproj", "{1AE7E2CF-E1F3-4328-A1C7-7AA9CE5D7488}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A843D19E-6456-411E-A168-24B354170231}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
