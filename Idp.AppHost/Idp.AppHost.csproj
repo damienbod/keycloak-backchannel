@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MvcHybridBackChannelTwo\MvcHybridBackChannelTwo.csproj" />
     <ProjectReference Include="..\MvcHybridBackChannel\MvcHybridBackChannel.csproj" />
   </ItemGroup>
 
