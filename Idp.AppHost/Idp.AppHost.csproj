@@ -10,13 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Idp.ApiService\Idp.ApiService.csproj" />
-    <ProjectReference Include="..\Idp.Web\Idp.Web.csproj" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.1.0" />
+    <PackageReference Include="Keycloak.AuthServices.Aspire.Hosting" Version="0.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.1.0" />
-    <PackageReference Include="Keycloak.AuthServices.Aspire.Hosting" Version="0.1.0" />
+    <ProjectReference Include="..\MvcHybridBackChannel\MvcHybridBackChannel.csproj" />
   </ItemGroup>
 
 </Project>

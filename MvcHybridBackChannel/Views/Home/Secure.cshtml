@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Authentication
+
+<h1>Secure</h1>
+
+<div class="panel">
+    <a class="btn btn-primary" href="~/home/renewtokens">Renew Tokens</a>
+</div>
+
+@{
+    var it = await Context.GetTokenAsync("id_token");
+    var at = await Context.GetTokenAsync("access_token");
+    var rt = await Context.GetTokenAsync("refresh_token");
+}
+
+<div>
+    <dl>
+        @if (it != null)
+        {
+            <dt>id_token</dt>
+            <dd>@it</dd>
+        }
+        @if (at != null)
+        {
+            <dt>access_token</dt>
+            <dd>@at</dd>
+        }
+        @if (rt != null)
+        {
+            <dt>refresh_token</dt>
+            <dd>@rt</dd>
+        }
+        @foreach (var claim in User.Claims)
+        {
+            <dt>@claim.Type</dt>
+            <dd>@claim.Value</dd>
+        }
+    </dl>
+</div>

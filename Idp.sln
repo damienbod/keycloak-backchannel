@@ -6,16 +6,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Idp.AppHost", "Idp.AppHost\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Idp.ServiceDefaults", "Idp.ServiceDefaults\Idp.ServiceDefaults.csproj", "{B4C8D0ED-F798-422D-A032-1F96B0BB9BF9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Idp.ApiService", "Idp.ApiService\Idp.ApiService.csproj", "{13196085-FA81-40B9-A76B-80D77CC05DCF}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Idp.Web", "Idp.Web\Idp.Web.csproj", "{5B9B6975-A2FF-4F6D-96EA-677FB6680473}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Idp.Keycloak.ServiceDefaults", "Idp.Keycloak\Idp.Keycloak.ServiceDefaults\Idp.Keycloak.ServiceDefaults.csproj", "{1AE7E2CF-E1F3-4328-A1C7-7AA9CE5D7488}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A843D19E-6456-411E-A168-24B354170231}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcHybridBackChannel", "MvcHybridBackChannel\MvcHybridBackChannel.csproj", "{B2561C33-8215-4E5A-ADEE-4881C8ACC502}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,18 +27,10 @@ Global
 		{B4C8D0ED-F798-422D-A032-1F96B0BB9BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4C8D0ED-F798-422D-A032-1F96B0BB9BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4C8D0ED-F798-422D-A032-1F96B0BB9BF9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13196085-FA81-40B9-A76B-80D77CC05DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13196085-FA81-40B9-A76B-80D77CC05DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13196085-FA81-40B9-A76B-80D77CC05DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13196085-FA81-40B9-A76B-80D77CC05DCF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5B9B6975-A2FF-4F6D-96EA-677FB6680473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B9B6975-A2FF-4F6D-96EA-677FB6680473}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B9B6975-A2FF-4F6D-96EA-677FB6680473}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B9B6975-A2FF-4F6D-96EA-677FB6680473}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1AE7E2CF-E1F3-4328-A1C7-7AA9CE5D7488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1AE7E2CF-E1F3-4328-A1C7-7AA9CE5D7488}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1AE7E2CF-E1F3-4328-A1C7-7AA9CE5D7488}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1AE7E2CF-E1F3-4328-A1C7-7AA9CE5D7488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2561C33-8215-4E5A-ADEE-4881C8ACC502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2561C33-8215-4E5A-ADEE-4881C8ACC502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2561C33-8215-4E5A-ADEE-4881C8ACC502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2561C33-8215-4E5A-ADEE-4881C8ACC502}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
