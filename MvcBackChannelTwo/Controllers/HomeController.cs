@@ -54,9 +54,9 @@ public class HomeController : Controller
 
         var tokenResult = await HttpClientTokenRequestExtensions.RequestRefreshTokenAsync(tokenclient, new RefreshTokenRequest
         {
-            ClientSecret = _configuration["SecretMvcBackChannelTwoBackChannel"],
+            ClientSecret = _configuration["SecretMvcBackChannelTwo"],
             Address = disco.TokenEndpoint,
-            ClientId = "mvc.hybrid.backchanneltwo",
+            ClientId = "mvcbackchanneltwo",
             RefreshToken = refreshToken
         });
 
