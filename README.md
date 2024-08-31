@@ -7,3 +7,5 @@ https://www.keycloak.org/
 https://www.keycloak.org/server/features
 
 https://github.com/NikiforovAll/keycloak-authorization-services-dotnet
+
+https://openid.net/specs/openid-connect-backchannel-1_0.html
