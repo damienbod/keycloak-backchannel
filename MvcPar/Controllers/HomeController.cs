@@ -11,7 +11,7 @@ namespace MvcPar.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly AuthConfiguration _optionsAuthConfiguration;
+    private readonly AuthConfiguration _authConfiguration;
     private readonly IHttpClientFactory _clientFactory;
     private readonly IConfiguration _configuration;
 
@@ -21,7 +21,7 @@ public class HomeController : Controller
         IHttpClientFactory clientFactory)
     {
         _configuration = configuration;
-        _optionsAuthConfiguration = optionsAuthConfiguration.Value;
+        _authConfiguration = optionsAuthConfiguration.Value;
         _clientFactory = clientFactory;
     }
 
@@ -43,7 +43,7 @@ public class HomeController : Controller
 
         var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(
             tokenclient,
-            _optionsAuthConfiguration.StsServerIdentityUrl);
+            _authConfiguration.StsServerIdentityUrl);
 
         if (disco.IsError)
         {
@@ -54,9 +54,9 @@ public class HomeController : Controller
 
         var tokenResult = await HttpClientTokenRequestExtensions.RequestRefreshTokenAsync(tokenclient, new RefreshTokenRequest
         {
-            ClientSecret = _configuration["SecretMvcPar"],
+            ClientSecret = _authConfiguration.ClientSecret,
             Address = disco.TokenEndpoint,
-            ClientId = "mvcpar",
+            ClientId = _authConfiguration.Audience,
             RefreshToken = refreshToken
         });
 

@@ -56,7 +56,7 @@ internal static class StartupExtensions
             .AddOpenIdConnect("oidc", options =>
             {
                 options.Authority = authConfiguration["StsServerIdentityUrl"];
-                options.ClientSecret = configuration["SecretMvcBackChannelTwo"];
+                options.ClientSecret = authConfiguration["ClientSecret"];
                 options.ClientId = authConfiguration["Audience"];
 
                 options.ResponseType = "code";
