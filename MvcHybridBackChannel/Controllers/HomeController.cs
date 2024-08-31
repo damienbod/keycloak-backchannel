@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using System.Globalization;
 
+// See Duende samples for original code
 namespace MvcHybridBackChannel.Controllers;
 
 public class HomeController : Controller
@@ -61,15 +62,15 @@ public class HomeController : Controller
 
         if (!tokenResult.IsError)
         {
-            var old_id_token = await HttpContext.GetTokenAsync("id_token");
-            var new_access_token = tokenResult.AccessToken;
-            var new_refresh_token = tokenResult.RefreshToken;
+            var oldIdToken = await HttpContext.GetTokenAsync("id_token");
+            var newAccessToken = tokenResult.AccessToken;
+            var newRefreshToken = tokenResult.RefreshToken;
 
             var tokens = new List<AuthenticationToken>
             {
-                new AuthenticationToken { Name = OpenIdConnectParameterNames.IdToken, Value = old_id_token },
-                new AuthenticationToken { Name = OpenIdConnectParameterNames.AccessToken, Value = new_access_token },
-                new AuthenticationToken { Name = OpenIdConnectParameterNames.RefreshToken, Value = new_refresh_token }
+                new AuthenticationToken { Name = OpenIdConnectParameterNames.IdToken, Value = oldIdToken },
+                new AuthenticationToken { Name = OpenIdConnectParameterNames.AccessToken, Value = newAccessToken },
+                new AuthenticationToken { Name = OpenIdConnectParameterNames.RefreshToken, Value = newRefreshToken }
             };
 
             var expiresAt = DateTime.UtcNow + TimeSpan.FromSeconds(tokenResult.ExpiresIn);
