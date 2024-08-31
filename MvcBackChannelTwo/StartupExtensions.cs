@@ -38,7 +38,7 @@ internal static class StartupExtensions
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = configuration.GetConnectionString("RedisCacheConnection");
-                options.InstanceName = "MvcBackChannelTwoBackChannelTwoInstance";
+                options.InstanceName = "MvcBackChannelTwoInstance";
             });
         }
 
