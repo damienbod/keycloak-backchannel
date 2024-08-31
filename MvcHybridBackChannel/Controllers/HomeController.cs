@@ -49,14 +49,14 @@ public class HomeController : Controller
             throw new ApplicationException($"Status code: {disco.IsError}, Error: {disco.Error}");
         }
 
-        var rt = await HttpContext.GetTokenAsync("refresh_token");
+        var refreshToken = await HttpContext.GetTokenAsync(OpenIdConnectParameterNames.RefreshToken);
 
         var tokenResult = await HttpClientTokenRequestExtensions.RequestRefreshTokenAsync(tokenclient, new RefreshTokenRequest
         {
-            ClientSecret = "secret",
+            ClientSecret = _configuration["SecretMvcHybridBackChannelBackChannel"],
             Address = disco.TokenEndpoint,
             ClientId = "mvc.hybrid.backchannel",
-            RefreshToken = rt
+            RefreshToken = refreshToken
         });
 
         if (!tokenResult.IsError)

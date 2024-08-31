@@ -59,7 +59,7 @@ internal static class StartupExtensions
                 options.Authority = authConfiguration["StsServerIdentityUrl"];
                 options.RequireHttpsMetadata = false;
 
-                options.ClientSecret = configuration["SecretMvcHybridBackChannelTwoBackChannel"]; ;
+                options.ClientSecret = configuration["SecretMvcHybridBackChannelTwoBackChannel"];
                 options.ClientId = clientId_aud;
 
                 options.ResponseType = "code";
