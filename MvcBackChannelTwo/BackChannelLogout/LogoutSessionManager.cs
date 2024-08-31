@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
 
-namespace MvcHybridBackChannelTwo.BackChannelLogout;
+namespace MvcBackChannelTwo.BackChannelLogout;
 
 public partial class LogoutSessionManager
 {

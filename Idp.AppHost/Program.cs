@@ -14,7 +14,7 @@ builder.AddProject<Projects.MvcHybridBackChannel>("MvcHybridBackChannel")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 
-builder.AddProject<Projects.MvcHybridBackChannelTwo>("MvcHybridBackChannelTwo")
+builder.AddProject<Projects.MvcBackChannelTwo>("MvcBackChannelTwo")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 

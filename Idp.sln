@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcHybridBackChannel", "MvcHybridBackChannel\MvcHybridBackChannel.csproj", "{B2561C33-8215-4E5A-ADEE-4881C8ACC502}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcHybridBackChannelTwo", "MvcHybridBackChannelTwo\MvcHybridBackChannelTwo.csproj", "{2167311D-6E68-476B-9F6E-4F2953408126}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcBackChannelTwo", "MvcBackChannelTwo\MvcBackChannelTwo.csproj", "{DEF2F3EF-8917-4FAD-92FB-61E9796E575E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,10 @@ Global
 		{B2561C33-8215-4E5A-ADEE-4881C8ACC502}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2561C33-8215-4E5A-ADEE-4881C8ACC502}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2561C33-8215-4E5A-ADEE-4881C8ACC502}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2167311D-6E68-476B-9F6E-4F2953408126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2167311D-6E68-476B-9F6E-4F2953408126}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2167311D-6E68-476B-9F6E-4F2953408126}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2167311D-6E68-476B-9F6E-4F2953408126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEF2F3EF-8917-4FAD-92FB-61E9796E575E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF2F3EF-8917-4FAD-92FB-61E9796E575E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF2F3EF-8917-4FAD-92FB-61E9796E575E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF2F3EF-8917-4FAD-92FB-61E9796E575E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

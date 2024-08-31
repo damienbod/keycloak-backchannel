@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
-using MvcHybridBackChannelTwo.BackChannelLogout;
+using MvcBackChannelTwo.BackChannelLogout;
 using Serilog;
 
-namespace MvcHybridBackChannelTwo;
+namespace MvcBackChannelTwo;
 
 internal static class StartupExtensions
 {
@@ -38,7 +38,7 @@ internal static class StartupExtensions
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = configuration.GetConnectionString("RedisCacheConnection");
-                options.InstanceName = "MvcHybridBackChannelTwoBackChannelTwoInstance";
+                options.InstanceName = "MvcBackChannelTwoBackChannelTwoInstance";
             });
         }
 
@@ -50,7 +50,7 @@ internal static class StartupExtensions
             .AddCookie(options =>
             {
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-                options.Cookie.Name = "MvcHybridBackChannelTwo";
+                options.Cookie.Name = "MvcBackChannelTwo";
 
                 options.EventsType = typeof(CookieEventHandler);
             })
@@ -59,7 +59,7 @@ internal static class StartupExtensions
                 options.Authority = authConfiguration["StsServerIdentityUrl"];
                 options.RequireHttpsMetadata = false;
 
-                options.ClientSecret = configuration["SecretMvcHybridBackChannelTwoBackChannel"];
+                options.ClientSecret = configuration["SecretMvcBackChannelTwoBackChannel"];
                 options.ClientId = clientId_aud;
 
                 options.ResponseType = "code";
