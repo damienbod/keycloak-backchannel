@@ -30,7 +30,7 @@ internal static class StartupExtensions
 
         if (string.IsNullOrEmpty(redisConnectionString))
         {
-            // remove this, if your use a proper development cache hich uses the same as the production
+            // remove this, if your use a proper development cache which uses the same as the production
             services.AddDistributedMemoryCache();
         }
         else
