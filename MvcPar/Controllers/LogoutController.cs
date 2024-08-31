@@ -4,12 +4,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using MvcHybridBackChannel.BackChannelLogout;
+using MvcPar.BackChannelLogout;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text.Json;
 
-namespace MvcHybridBackChannel.Controllers;
+namespace MvcPar.Controllers;
 
 // See Duende IdentityServer original src:
 // https://github.com/DuendeSoftware/Samples/tree/main/IdentityServer/v7/SessionManagement/Client

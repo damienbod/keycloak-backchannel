@@ -10,7 +10,7 @@ var keycloak = builder.AddKeycloakContainer("keycloak", userName: userName, pass
     .WithDataVolume()
     .RunWithHttpsDevCertificate(port: 8081);
 
-builder.AddProject<Projects.MvcHybridBackChannel>("MvcHybridBackChannel")
+builder.AddProject<Projects.MvcPar>("MvcPar")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 

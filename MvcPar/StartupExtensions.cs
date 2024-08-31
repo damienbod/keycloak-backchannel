@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
-using MvcHybridBackChannel.BackChannelLogout;
+using MvcPar.BackChannelLogout;
 using Serilog;
 
-namespace MvcHybridBackChannel;
+namespace MvcPar;
 
 internal static class StartupExtensions
 {
@@ -24,7 +24,6 @@ internal static class StartupExtensions
         services.Configure<AuthConfiguration>(configuration.GetSection("AuthConfiguration"));
 
         var authConfiguration = configuration.GetSection("AuthConfiguration");
-        var clientId_aud = authConfiguration["Audience"];
 
         var redisConnectionString = configuration.GetConnectionString("RedisCacheConnection");
 
@@ -57,9 +56,8 @@ internal static class StartupExtensions
         .AddOpenIdConnect("oidc", options =>
         {
             options.Authority = authConfiguration["StsServerIdentityUrl"];
-            options.RequireHttpsMetadata = false;
-            options.ClientSecret = configuration["SecretMvcHybridBackChannelBackChannel"];
-            options.ClientId = clientId_aud;
+            options.ClientSecret = configuration["SecretMvcPar"];
+            options.ClientId = authConfiguration["Audience"];
             options.ResponseType = "code";
 
             options.Scope.Clear();

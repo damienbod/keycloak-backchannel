@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
-namespace MvcHybridBackChannel.BackChannelLogout;
+namespace MvcPar.BackChannelLogout;
 
 public class CookieEventHandler : CookieAuthenticationEvents
 {

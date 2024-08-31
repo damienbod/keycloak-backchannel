@@ -1,5 +1,5 @@
 using Azure.Identity;
-using MvcHybridBackChannel;
+using MvcPar;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()

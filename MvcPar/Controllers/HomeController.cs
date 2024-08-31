@@ -7,7 +7,7 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using System.Globalization;
 
 // See Duende samples for original code
-namespace MvcHybridBackChannel.Controllers;
+namespace MvcPar.Controllers;
 
 public class HomeController : Controller
 {
@@ -54,9 +54,9 @@ public class HomeController : Controller
 
         var tokenResult = await HttpClientTokenRequestExtensions.RequestRefreshTokenAsync(tokenclient, new RefreshTokenRequest
         {
-            ClientSecret = _configuration["SecretMvcHybridBackChannelBackChannel"],
+            ClientSecret = _configuration["SecretMvcPar"],
             Address = disco.TokenEndpoint,
-            ClientId = "mvc.hybrid.backchannel",
+            ClientId = "mvcpar",
             RefreshToken = refreshToken
         });
 

@@ -1,4 +1,4 @@
-﻿namespace MvcHybridBackChannel.BackChannelLogout;
+﻿namespace MvcPar.BackChannelLogout;
 
 public partial class LogoutSessionManager
 {
