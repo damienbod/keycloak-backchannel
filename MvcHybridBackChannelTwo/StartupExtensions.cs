@@ -1,23 +1,21 @@
 using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
-using MvcHybridBackChannel.BackChannelLogout;
+using MvcHybridBackChannelTwo.BackChannelLogout;
 using Serilog;
 
-namespace MvcHybridBackChannel;
+namespace MvcHybridBackChannelTwo;
 
-internal static class HostingExtensions
+internal static class StartupExtensions
 {
-    private static IWebHostEnvironment? _env;
-
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
         var services = builder.Services;
         var configuration = builder.Configuration;
-        _env = builder.Environment;
 
         services.AddTransient<CookieEventHandler>();
         services.AddSingleton<LogoutSessionManager>();
@@ -32,7 +30,7 @@ internal static class HostingExtensions
 
         if (string.IsNullOrEmpty(redisConnectionString))
         {
-            // remove this, if your use a proper development cache hich uses the same as the production
+            // remove this, if your use a proper development cache which uses the same as the production
             services.AddDistributedMemoryCache();
         }
         else
@@ -40,7 +38,7 @@ internal static class HostingExtensions
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = configuration.GetConnectionString("RedisCacheConnection");
-                options.InstanceName = "MvcHybridBackChannelBackChannelInstance";
+                options.InstanceName = "MvcHybridBackChannelTwoBackChannelTwoInstance";
             });
         }
 
@@ -49,39 +47,43 @@ internal static class HostingExtensions
             options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = "oidc";
         })
-        .AddCookie(options =>
-        {
-            options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-            options.Cookie.Name = "MvcHybridBackChannel";
-
-            options.EventsType = typeof(CookieEventHandler);
-        })
-        .AddOpenIdConnect("oidc", options =>
-        {
-            options.Authority = authConfiguration["StsServerIdentityUrl"];
-            options.RequireHttpsMetadata = false;
-            options.ClientSecret = configuration["SecretMvcHybridBackChannelBackChannel"];
-            options.ClientId = clientId_aud;
-            options.ResponseType = "code";
-
-            options.Scope.Clear();
-            options.Scope.Add("openid");
-            options.Scope.Add("profile");
-            options.Scope.Add("email");
-            options.Scope.Add("offline_access");
-
-            options.ClaimActions.Remove("amr");
-            options.ClaimActions.MapJsonKey("website", "website");
-
-            options.GetClaimsFromUserInfoEndpoint = true;
-            options.SaveTokens = true;
-
-            options.TokenValidationParameters = new TokenValidationParameters
+            .AddCookie(options =>
             {
-                NameClaimType = JwtClaimTypes.Name,
-                RoleClaimType = JwtClaimTypes.Role,
-            };
-        });
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                options.Cookie.Name = "MvcHybridBackChannelTwo";
+
+                options.EventsType = typeof(CookieEventHandler);
+            })
+            .AddOpenIdConnect("oidc", options =>
+            {
+                options.Authority = authConfiguration["StsServerIdentityUrl"];
+                options.RequireHttpsMetadata = false;
+
+                options.ClientSecret = configuration["SecretMvcHybridBackChannelTwoBackChannel"]; ;
+                options.ClientId = clientId_aud;
+
+                options.ResponseType = "code";
+
+                options.Scope.Clear();
+                options.Scope.Add("openid");
+                options.Scope.Add("profile");
+                options.Scope.Add("email");
+                options.Scope.Add("offline_access");
+
+                options.ClaimActions.Remove("amr");
+                options.ClaimActions.MapJsonKey("website", "website");
+
+                options.GetClaimsFromUserInfoEndpoint = true;
+                options.SaveTokens = true;
+
+                options.PushedAuthorizationBehavior = PushedAuthorizationBehavior.Require;
+
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    NameClaimType = JwtClaimTypes.Name,
+                    RoleClaimType = JwtClaimTypes.Role,
+                };
+            });
 
         services.AddControllersWithViews();
 
@@ -95,7 +97,7 @@ internal static class HostingExtensions
 
         app.UseSerilogRequestLogging();
 
-        if (_env!.IsDevelopment())
+        if (app.Environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
         }
