@@ -55,7 +55,7 @@ public static class HostingExtensions
     /// https://learn.microsoft.com/aspnet/core/security/enforcing-ssl</see>
     /// for more information on the ASP.NET Core HTTPS development certificate.
     /// </remarks>
-    public static IResourceBuilder<KeycloakResource> RunWithHttpsDevCertificate(this IResourceBuilder<KeycloakResource> builder, int targetPort = 8443)
+    public static IResourceBuilder<KeycloakResource> RunWithHttpsDevCertificate(this IResourceBuilder<KeycloakResource> builder, int port = 8081, int targetPort = 8443)
     {
         if (builder.ApplicationBuilder.ExecutionContext.IsRunMode)
         {
@@ -63,7 +63,7 @@ public static class HostingExtensions
             // via the KC_HTTPS_CERTIFICATE_FILE and KC_HTTPS_CERTIFICATE_KEY_FILE environment variables.
             builder
                 .RunWithHttpsDevCertificate("KC_HTTPS_CERTIFICATE_FILE", "KC_HTTPS_CERTIFICATE_KEY_FILE")
-                .WithHttpsEndpoint(env: "KC_HTTPS_PORT", targetPort: targetPort)
+                .WithHttpsEndpoint(port: port, targetPort: targetPort)
                 .WithEnvironment("KC_HOSTNAME", "localhost")
                 // Without disabling HTTP/2 you can hit HTTP 431 Header too large errors in Keycloak.
                 // Related issues:
