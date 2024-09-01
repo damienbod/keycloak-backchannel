@@ -39,7 +39,7 @@ public class LogoutController : Controller
     {
         _logger.LogInformation("BC Logout event from server: {logout_token}", logout_token);
 
-        // MvcHybridBackChannelBackChannel Backchannel Logout from the server
+        // Mvc Par Backchannel Logout from the server
         Response.Headers.Append("Cache-Control", "no-cache, no-store");
         Response.Headers.Append("Pragma", "no-cache");
 

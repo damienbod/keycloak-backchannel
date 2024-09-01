@@ -37,7 +37,7 @@ internal static class StartupExtensions
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = configuration.GetConnectionString("RedisCacheConnection");
-                options.InstanceName = "MvcHybridBackChannelBackChannelInstance";
+                options.InstanceName = "MvcPar";
             });
         }
 
@@ -49,7 +49,7 @@ internal static class StartupExtensions
         .AddCookie(options =>
         {
             options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-            options.Cookie.Name = "MvcHybridBackChannel";
+            options.Cookie.Name = "MvcPar";
 
             options.EventsType = typeof(CookieEventHandler);
         })
