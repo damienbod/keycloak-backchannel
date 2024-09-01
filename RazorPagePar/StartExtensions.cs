@@ -57,12 +57,9 @@ internal static class StartExtensions
 
         services.AddRazorPages();
 
-        // add automatic token management
-        //services.AddOpenIdConnectAccessTokenManagement();
-
         return builder.Build();
     }
-    
+
     public static WebApplication ConfigurePipeline(this WebApplication app)
     {
         IdentityModelEventSource.ShowPII = true;
