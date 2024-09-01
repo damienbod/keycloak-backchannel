@@ -1,5 +1,7 @@
 ## Aspire Keycloak with OpenID Connect backchannel clients
 
+[Implement ASP.NET Core OpenID Connect OAuth PAR client with Keycloak using .NET Aspire](https://damienbod.com)
+
 ## Links
 
 https://www.keycloak.org/
