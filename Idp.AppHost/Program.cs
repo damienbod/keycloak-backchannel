@@ -11,6 +11,10 @@ var keycloak = builder.AddKeycloakContainer("keycloak",
     .WithDataVolume()
     .RunWithHttpsDevCertificate(port: 8081);
 
+builder.AddProject<Projects.RazorPagePar>("RazorPagePar")
+    .WithExternalHttpEndpoints()
+    .WithReference(keycloak);
+
 builder.AddProject<Projects.MvcPar>("MvcPar")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);

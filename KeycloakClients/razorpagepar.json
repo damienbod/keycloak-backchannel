@@ -1,10 +1,10 @@
 {
-  "clientId": "mvc.hybrid.backchannel",
-  "name": "mvc.hybrid.backchannel",
+  "clientId": "razorpagepar",
+  "name": "razorpagepar",
   "description": "Confidential client with backchannel",
-  "rootUrl": "https://localhost:44327",
-  "adminUrl": "https://localhost:44327",
-  "baseUrl": "https://localhost:44327",
+  "rootUrl": "https://localhost:5007",
+  "adminUrl": "https://localhost:5007",
+  "baseUrl": "https://localhost:5007",
   "surrogateAuthRequired": false,
   "enabled": true,
   "alwaysDisplayInConsole": true,
@@ -12,10 +12,10 @@
   "secret": "dbptwRXOjSZbi8OIheE807Shb6pd93af",
   "redirectUris": [
     "",
-    "https://localhost:44327/signin-oidc"
+    "https://localhost:5007/signin-oidc"
   ],
   "webOrigins": [
-    "https://localhost:44327"
+    "https://localhost:5007"
   ],
   "notBefore": 0,
   "bearerOnly": false,
@@ -30,7 +30,7 @@
   "protocol": "openid-connect",
   "attributes": {
     "client.secret.creation.time": "1725039308",
-    "post.logout.redirect.uris": "https://localhost:44327/signout-callback-oidc",
+    "post.logout.redirect.uris": "https://localhost:5007/signout-callback-oidc",
     "oauth2.device.authorization.grant.enabled": "false",
     "use.jwks.url": "false",
     "access.token.signed.response.alg": "ES256",
@@ -40,7 +40,6 @@
     "client.use.lightweight.access.token.enabled": "false",
     "id.token.signed.response.alg": "ES256",
     "backchannel.logout.session.required": "true",
-    "backchannel.logout.url": "https://localhost:44327/logout",
     "client_credentials.use_refresh_token": "true",
     "tls.client.certificate.bound.access.tokens": "false",
     "require.pushed.authorization.requests": "true",
@@ -48,39 +47,27 @@
     "display.on.consent.screen": "false",
     "pkce.code.challenge.method": "S256",
     "token.response.type.bearer.lower-case": "false",
-    "dpop.bound.access.tokens": "false",
-    "login_theme": "",
-    "frontchannel.logout.url": "",
-    "logoUri": "",
-    "policyUri": "",
-    "tosUri": "",
-    "id.token.encrypted.response.alg": "",
-    "id.token.encrypted.response.enc": "",
-    "user.info.response.signature.alg": "",
-    "user.info.encrypted.response.alg": "",
-    "user.info.encrypted.response.enc": "",
-    "request.object.signature.alg": "",
-    "request.object.encryption.alg": "",
-    "request.object.encryption.enc": "",
-    "request.object.required": "",
-    "authorization.signed.response.alg": "",
-    "authorization.encrypted.response.alg": "",
-    "authorization.encrypted.response.enc": "",
-    "exclude.session.state.from.auth.response": "",
-    "exclude.issuer.from.auth.response": "",
-    "access.token.lifespan": "",
-    "client.session.idle.timeout": "",
-    "client.session.max.lifespan": "",
-    "client.offline.session.idle.timeout": "",
-    "client.offline.session.max.lifespan": ""
+    "dpop.bound.access.tokens": "false"
   },
-  "authenticationFlowBindingOverrides": {
-    "browser": "",
-    "direct_grant": ""
-  },
+  "authenticationFlowBindingOverrides": {},
   "fullScopeAllowed": true,
   "nodeReRegistrationTimeout": -1,
   "protocolMappers": [
+    {
+      "name": "Client ID",
+      "protocol": "openid-connect",
+      "protocolMapper": "oidc-usersessionmodel-note-mapper",
+      "consentRequired": false,
+      "config": {
+        "user.session.note": "client_id",
+        "introspection.token.claim": "true",
+        "userinfo.token.claim": "true",
+        "id.token.claim": "true",
+        "access.token.claim": "true",
+        "claim.name": "client_id",
+        "jsonType.label": "String"
+      }
+    },
     {
       "name": "Client Host",
       "protocol": "openid-connect",
@@ -89,6 +76,7 @@
       "config": {
         "user.session.note": "clientHost",
         "introspection.token.claim": "true",
+        "userinfo.token.claim": "true",
         "id.token.claim": "true",
         "access.token.claim": "true",
         "claim.name": "clientHost",
@@ -103,23 +91,10 @@
       "config": {
         "user.session.note": "clientAddress",
         "introspection.token.claim": "true",
+        "userinfo.token.claim": "true",
         "id.token.claim": "true",
         "access.token.claim": "true",
         "claim.name": "clientAddress",
-        "jsonType.label": "String"
-      }
-    },
-    {
-      "name": "Client ID",
-      "protocol": "openid-connect",
-      "protocolMapper": "oidc-usersessionmodel-note-mapper",
-      "consentRequired": false,
-      "config": {
-        "user.session.note": "client_id",
-        "introspection.token.claim": "true",
-        "id.token.claim": "true",
-        "access.token.claim": "true",
-        "claim.name": "client_id",
         "jsonType.label": "String"
       }
     }

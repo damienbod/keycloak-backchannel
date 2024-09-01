@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MvcBackChannelTwo\MvcBackChannelTwo.csproj" />
     <ProjectReference Include="..\MvcPar\MvcPar.csproj" />
+    <ProjectReference Include="..\RazorPagePar\RazorPagePar.csproj" />
   </ItemGroup>
 
 </Project>
