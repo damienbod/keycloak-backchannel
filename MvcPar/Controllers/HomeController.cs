@@ -1,5 +1,7 @@
 ﻿using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -78,7 +80,7 @@ public class HomeController : Controller
 
             var info = await HttpContext.AuthenticateAsync("Cookies");
             info.Properties!.StoreTokens(tokens);
-            await HttpContext.SignInAsync("Cookies", info.Principal!, info.Properties);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, info.Principal!, info.Properties);
 
             return Redirect("~/Home/Secure");
         }
@@ -89,7 +91,7 @@ public class HomeController : Controller
 
     public IActionResult Logout()
     {
-        return new SignOutResult(["Cookies", "oidc"]);
+        return new SignOutResult([CookieAuthenticationDefaults.AuthenticationScheme, OpenIdConnectDefaults.AuthenticationScheme]);
     }
 
     public IActionResult Error()

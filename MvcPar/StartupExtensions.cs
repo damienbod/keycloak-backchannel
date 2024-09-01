@@ -44,7 +44,7 @@ internal static class StartupExtensions
         services.AddAuthentication(options =>
         {
             options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            options.DefaultChallengeScheme = "oidc";
+            options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
         })
         .AddCookie(options =>
         {
@@ -53,7 +53,7 @@ internal static class StartupExtensions
 
             options.EventsType = typeof(CookieEventHandler);
         })
-        .AddOpenIdConnect("oidc", options =>
+        .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
         {
             options.Authority = authConfiguration["StsServerIdentityUrl"];
             options.ClientSecret = authConfiguration["ClientSecret"];
