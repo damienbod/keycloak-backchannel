@@ -2,6 +2,8 @@
 
 [Implement ASP.NET Core OpenID Connect OAuth PAR client with Keycloak using .NET Aspire](https://damienbod.com)
 
+![Overview](https://github.com/damienbod/keycloak-backchannel/blob/main/images/oauth-par-keycloak_01.png)
+
 ## Links
 
 https://www.keycloak.org/
