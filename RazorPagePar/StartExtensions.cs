@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 
@@ -26,34 +27,34 @@ internal static class StartExtensions
             options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
         })
-      .AddCookie()
-      .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
-      {
-          options.Authority = authConfiguration["StsServerIdentityUrl"];
-          options.ClientSecret = authConfiguration["ClientSecret"];
-          options.ClientId = authConfiguration["Audience"];
-          options.ResponseType = "code";
+        .AddCookie()
+        .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
+        {
+            options.Authority = authConfiguration["StsServerIdentityUrl"];
+            options.ClientSecret = authConfiguration["ClientSecret"];
+            options.ClientId = authConfiguration["Audience"];
+            options.ResponseType = OpenIdConnectResponseType.Code;
 
-          options.Scope.Clear();
-          options.Scope.Add("openid");
-          options.Scope.Add("profile");
-          options.Scope.Add("email");
-          options.Scope.Add("offline_access");
+            options.Scope.Clear();
+            options.Scope.Add("openid");
+            options.Scope.Add("profile");
+            options.Scope.Add("email");
+            options.Scope.Add("offline_access");
 
-          options.ClaimActions.Remove("amr");
-          options.ClaimActions.MapJsonKey("website", "website");
+            options.ClaimActions.Remove("amr");
+            options.ClaimActions.MapJsonKey("website", "website");
 
-          options.GetClaimsFromUserInfoEndpoint = true;
-          options.SaveTokens = true;
+            options.GetClaimsFromUserInfoEndpoint = true;
+            options.SaveTokens = true;
 
-          options.PushedAuthorizationBehavior = PushedAuthorizationBehavior.Require;
+            options.PushedAuthorizationBehavior = PushedAuthorizationBehavior.Require;
 
-          options.TokenValidationParameters = new TokenValidationParameters
-          {
-              NameClaimType = JwtClaimTypes.Name,
-              RoleClaimType = JwtClaimTypes.Role,
-          };
-      });
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                NameClaimType = JwtClaimTypes.Name,
+                RoleClaimType = JwtClaimTypes.Role,
+            };
+        });
 
         services.AddRazorPages();
 
