@@ -17,6 +17,10 @@ builder.AddProject<Projects.MvcPar>("MvcPar")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 
+builder.AddProject<Projects.AngularBff>("AngularBff")
+    .WithExternalHttpEndpoints()
+    .WithReference(keycloak);
+
 builder.AddProject<Projects.MvcBackChannelTwo>("MvcBackChannelTwo")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
