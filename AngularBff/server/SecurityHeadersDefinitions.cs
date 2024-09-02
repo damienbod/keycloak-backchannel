@@ -1,4 +1,4 @@
-﻿﻿namespace BffOpenIddict.Server;
+﻿﻿namespace AngularBff.Server;
 
 public static class SecurityHeadersDefinitions
 {

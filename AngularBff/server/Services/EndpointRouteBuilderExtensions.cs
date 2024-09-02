@@ -1,4 +1,4 @@
-namespace BffOpenIddict.Server.Services;
+namespace AngularBff.Server.Services;
 
 public static class EndpointRouteBuilderExtensions
 {

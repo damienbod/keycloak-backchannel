@@ -1,4 +1,4 @@
-﻿namespace BffOpenIddict.Server.Models;
+﻿namespace AngularBff.Server.Models;
 
 public class ClaimValue
 {

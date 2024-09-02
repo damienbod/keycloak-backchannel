@@ -1,5 +1,5 @@
-﻿using BffOpenIddict.Server;
-using BffOpenIddict.Server.Services;
+﻿using AngularBff.Server;
+using AngularBff.Server.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Mvc;
@@ -50,6 +50,9 @@ services.AddAuthentication(options =>
 
     options.SaveTokens = true;
     options.GetClaimsFromUserInfoEndpoint = true;
+
+    options.PushedAuthorizationBehavior = PushedAuthorizationBehavior.Require;
+
     options.TokenValidationParameters = new TokenValidationParameters
     {
         NameClaimType = "name"

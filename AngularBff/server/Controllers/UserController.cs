@@ -1,4 +1,4 @@
-﻿using BffOpenIddict.Server.Models;
+﻿using AngularBff.Server.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

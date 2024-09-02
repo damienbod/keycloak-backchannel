@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BffOpenIddict.Server.Models;
+namespace AngularBff.Server.Models;
 
 public class UserInfo
 {

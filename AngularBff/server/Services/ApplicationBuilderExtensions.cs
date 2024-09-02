@@ -1,6 +1,6 @@
 using Microsoft.Net.Http.Headers;
 
-namespace BffOpenIddict.Server.Services;
+namespace AngularBff.Server.Services;
 
 public static class ApplicationBuilderExtensions
 {

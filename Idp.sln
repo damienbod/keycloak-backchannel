@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcPar", "MvcPar\MvcPar.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPagePar", "RazorPagePar\RazorPagePar.csproj", "{07F5004F-594D-4A11-A2E8-D3C4D4295D31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BffServer", "AngularBff\server\BffServer.csproj", "{22D00080-3381-4883-8B34-5208AF6F53FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularBff", "AngularBff\server\AngularBff.csproj", "{22D00080-3381-4883-8B34-5208AF6F53FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

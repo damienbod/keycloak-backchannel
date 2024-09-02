@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BffOpenIddict.Server.Controllers;
+namespace AngularBff.Server.Controllers;
 
 [Route("api/[controller]")]
 public class AccountController : ControllerBase
