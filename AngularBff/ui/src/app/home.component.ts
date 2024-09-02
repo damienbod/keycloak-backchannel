@@ -44,6 +44,12 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  getGraphApiDataUsingApi() {
+    this.dataGraphApiCalls$ = this.httpClient.get<string[]>(
+      `${this.getCurrentHost()}/api/GraphApiData`
+    );
+  }
+
   private getCurrentHost() {
     const host = window.location.host;
     const url = `${window.location.protocol}//${host}`;
