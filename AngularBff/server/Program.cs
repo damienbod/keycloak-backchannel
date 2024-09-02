@@ -101,7 +101,6 @@ app.UseNoUnauthorizedRedirect("/api");
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapRazorPages();
 app.MapControllers();
 app.MapNotFound("/api/{**segment}");
 
