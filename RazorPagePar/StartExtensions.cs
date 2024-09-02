@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 
@@ -32,7 +33,7 @@ internal static class StartExtensions
             options.Authority = authConfiguration["StsServerIdentityUrl"];
             options.ClientSecret = authConfiguration["ClientSecret"];
             options.ClientId = authConfiguration["Audience"];
-            options.ResponseType = "code";
+            options.ResponseType = OpenIdConnectResponseType.Code;
 
             options.Scope.Clear();
             options.Scope.Add("openid");

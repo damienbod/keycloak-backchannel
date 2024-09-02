@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 using MvcBackChannelTwo.BackChannelLogout;
 using Serilog;
@@ -59,7 +60,7 @@ internal static class StartupExtensions
                 options.ClientSecret = authConfiguration["ClientSecret"];
                 options.ClientId = authConfiguration["Audience"];
 
-                options.ResponseType = "code";
+                options.ResponseType = OpenIdConnectResponseType.Code;
 
                 options.Scope.Clear();
                 options.Scope.Add("openid");
