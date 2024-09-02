@@ -13,7 +13,7 @@ builder.AddProject<Projects.RazorPagePar>("RazorPagePar")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 
-builder.AddProject<Projects.MvcPar>("MvcPar")
+var mvcpar = builder.AddProject<Projects.MvcPar>("MvcPar")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 
@@ -21,8 +21,11 @@ builder.AddProject<Projects.AngularBff>("AngularBff")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 
-builder.AddProject<Projects.MvcBackChannelTwo>("MvcBackChannelTwo")
+var mvcBackChannelTwo = builder.AddProject<Projects.MvcBackChannelTwo>("MvcBackChannelTwo")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
+
+keycloak.WithReference(mvcpar);
+keycloak.WithReference(mvcBackChannelTwo);
 
 builder.Build().Run();
