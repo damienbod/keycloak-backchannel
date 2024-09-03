@@ -6,6 +6,7 @@ var password = builder.AddParameter("password", secret: true);
 var keycloak = builder.AddKeycloakContainer("keycloak",
             userName: userName, password: password, port: 8080)
     .WithArgs("--features=preview")
+    .WithArgs("--spi-connections-http-client-default-disable-trust-manager=true")
     .WithDataVolume()
     .RunWithHttpsDevCertificate(port: 8081);
 
