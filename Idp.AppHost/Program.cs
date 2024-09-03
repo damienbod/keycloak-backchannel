@@ -6,6 +6,8 @@ var password = builder.AddParameter("password", secret: true);
 var keycloak = builder.AddKeycloakContainer("keycloak",
             userName: userName, password: password, port: 8080)
     .WithArgs("--features=preview")
+    // for more details regarding disable-trust-manager see https://www.keycloak.org/server/outgoinghttp#_client_configuration_command
+    // IMPORTANT: use this command ONLY in local development environment!
     .WithArgs("--spi-connections-http-client-default-disable-trust-manager=true")
     .WithDataVolume()
     .RunWithHttpsDevCertificate(port: 8081);
