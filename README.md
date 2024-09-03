@@ -6,13 +6,13 @@
 
 ## Links
 
+https://learn.microsoft.com/en-us/dotnet/aspire/
+
 https://www.keycloak.org/
 
 https://www.keycloak.org/server/features
 
 https://github.com/NikiforovAll/keycloak-authorization-services-dotnet
-
-https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview
 
 https://openid.net/specs/openid-connect-backchannel-1_0.html
 
