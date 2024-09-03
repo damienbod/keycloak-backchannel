@@ -9,23 +9,20 @@ var keycloak = builder.AddKeycloakContainer("keycloak",
     .WithDataVolume()
     .RunWithHttpsDevCertificate(port: 8081);
 
-builder.AddProject<Projects.RazorPagePar>("RazorPagePar")
+builder.AddProject<Projects.RazorPagePar>("razorpagepar")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 
-var mvcpar = builder.AddProject<Projects.MvcPar>("MvcPar")
+var mvcpar = builder.AddProject<Projects.MvcPar>("mvcpar")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 
-builder.AddProject<Projects.AngularBff>("AngularBff")
+builder.AddProject<Projects.AngularBff>("angularbff")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 
-var mvcBackChannelTwo = builder.AddProject<Projects.MvcBackChannelTwo>("MvcBackChannelTwo")
+var mvcbackchanneltwo = builder.AddProject<Projects.MvcBackChannelTwo>("mvcbackchanneltwo")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
-
-keycloak.WithReference(mvcpar);
-keycloak.WithReference(mvcBackChannelTwo);
 
 builder.Build().Run();
