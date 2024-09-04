@@ -27,3 +27,5 @@ https://github.com/dotnet/aspire-samples/blob/b741f5e78a86539bc9ab12cd7f4a5afea7
 https://github.com/dotnet/aspire/discussions/5497
 
 https://learn.microsoft.com/en-us/dotnet/aspire/caching/stackexchange-redis-integration?tabs=dotnet-cli&pivots=redis
+
+https://github.com/RedisInsight/RedisInsight
