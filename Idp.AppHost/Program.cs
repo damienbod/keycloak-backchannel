@@ -14,7 +14,8 @@ var keycloak = builder.AddKeycloakContainer("keycloak",
     .WithDataVolume()
     .RunWithHttpsDevCertificate(port: 8081);
 
-var cache = builder.AddRedis("cache");
+var cache = builder.AddRedis("cache", 6379)
+    .WithDataVolume();
 
 var mvcpar = builder.AddProject<Projects.MvcPar>("mvcpar")
     .WithExternalHttpEndpoints()
