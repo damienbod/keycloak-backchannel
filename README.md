@@ -25,3 +25,5 @@ https://github.com/dotnet/aspire-samples/tree/main/samples
 https://github.com/dotnet/aspire-samples/blob/b741f5e78a86539bc9ab12cd7f4a5afea7aa54c4/samples/Keycloak/Keycloak.AppHost/HostingExtensions.cs
 
 https://github.com/dotnet/aspire/discussions/5497
+
+https://learn.microsoft.com/en-us/dotnet/aspire/caching/stackexchange-redis-integration?tabs=dotnet-cli&pivots=redis
