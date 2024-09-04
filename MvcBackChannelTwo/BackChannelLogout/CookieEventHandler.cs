@@ -18,7 +18,7 @@ public class CookieEventHandler : CookieAuthenticationEvents
     {
         if (context.Principal!.Identity!.IsAuthenticated)
         {
-            _logger.LogInformation($"BC ValidatePrincipal: {context.Principal.Identity.IsAuthenticated}");
+            _logger.LogInformation("BC ValidatePrincipal: {IdentityIsAuthenticated}", context.Principal.Identity.IsAuthenticated);
             var sub = context.Principal.FindFirst("sub")?.Value;
             var sid = context.Principal.FindFirst("sid")?.Value;
 
