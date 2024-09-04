@@ -26,21 +26,7 @@ internal static class StartupExtensions
 
         var authConfiguration = configuration.GetSection("AuthConfiguration");
 
-        var redisConnectionString = configuration.GetConnectionString("RedisCacheConnection");
-
-        if (string.IsNullOrEmpty(redisConnectionString))
-        {
-            // remove this, if your use a proper development cache which uses the same as the production
-            services.AddDistributedMemoryCache();
-        }
-        else
-        {
-            services.AddStackExchangeRedisCache(options =>
-            {
-                options.Configuration = configuration.GetConnectionString("RedisCacheConnection");
-                options.InstanceName = "MvcBackChannelTwoInstance";
-            });
-        }
+        builder.AddRedisDistributedCache("cache");
 
         services.AddAuthentication(options =>
         {

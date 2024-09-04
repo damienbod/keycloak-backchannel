@@ -1,3 +1,5 @@
+using Aspire.Hosting;
+
 var builder = DistributedApplication.CreateBuilder(args);
 
 var userName = builder.AddParameter("userName");
@@ -12,19 +14,23 @@ var keycloak = builder.AddKeycloakContainer("keycloak",
     .WithDataVolume()
     .RunWithHttpsDevCertificate(port: 8081);
 
+var cache = builder.AddRedis("cache");
+
+var mvcpar = builder.AddProject<Projects.MvcPar>("mvcpar")
+    .WithExternalHttpEndpoints()
+    .WithReference(keycloak)
+    .WithReference(cache);
+
+var mvcbackchanneltwo = builder.AddProject<Projects.MvcBackChannelTwo>("mvcbackchanneltwo")
+    .WithExternalHttpEndpoints()
+    .WithReference(keycloak)
+    .WithReference(cache);
+
 builder.AddProject<Projects.RazorPagePar>("razorpagepar")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 
-var mvcpar = builder.AddProject<Projects.MvcPar>("mvcpar")
-    .WithExternalHttpEndpoints()
-    .WithReference(keycloak);
-
 builder.AddProject<Projects.AngularBff>("angularbff")
-    .WithExternalHttpEndpoints()
-    .WithReference(keycloak);
-
-var mvcbackchanneltwo = builder.AddProject<Projects.MvcBackChannelTwo>("mvcbackchanneltwo")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 
