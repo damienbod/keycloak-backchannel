@@ -33,3 +33,5 @@ https://github.com/RedisInsight/RedisInsight
 https://www.nutfieldsecurity.com/posts/Implement-SSO-With-Keycloak
 
 https://datatracker.ietf.org/doc/html/rfc9449
+
+https://github.com/DuendeSoftware/Samples/tree/main/IdentityServer/v7/DPoP
