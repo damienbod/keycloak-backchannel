@@ -1556,7 +1556,7 @@
       "frontchannelLogout": true,
       "protocol": "openid-connect",
       "attributes": {
-        "client.secret.creation.time": "1725615676",
+        "client.secret.creation.time": "1725616420",
         "post.logout.redirect.uris": "https://localhost:5017/signout-callback-oidc",
         "oauth2.device.authorization.grant.enabled": "false",
         "backchannel.logout.revoke.offline.tokens": "false",
@@ -1579,6 +1579,7 @@
       "defaultClientScopes": [
         "web-origins",
         "acr",
+        "scope-dpop",
         "profile",
         "roles",
         "email"
@@ -2074,6 +2075,18 @@
       ]
     },
     {
+      "id": "203357d5-3005-4166-bfb7-7bfd86bc332b",
+      "name": "scope-dpop",
+      "description": "scope required to use my test dpop protected api",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "true",
+        "gui.order": "",
+        "consent.screen.text": ""
+      }
+    },
+    {
       "id": "c640e51c-a917-4729-bde7-333377dad6ef",
       "name": "offline_access",
       "description": "OpenID Connect built-in scope: offline_access",
@@ -2141,7 +2154,8 @@
     "offline_access",
     "address",
     "phone",
-    "microprofile-jwt"
+    "microprofile-jwt",
+    "scope-dpop"
   ],
   "browserSecurityHeaders": {
     "contentSecurityPolicyReportOnly": "",
