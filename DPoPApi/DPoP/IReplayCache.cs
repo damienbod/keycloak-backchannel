@@ -1,4 +1,4 @@
-namespace Api;
+namespace DPoPApi;
 
 public interface IReplayCache
 {

@@ -5,7 +5,7 @@ using Microsoft.Net.Http.Headers;
 using System.Text;
 using static IdentityModel.OidcConstants;
 
-namespace Api;
+namespace DPoPApi;
 
 public class DPoPJwtBearerEvents : JwtBearerEvents
 {

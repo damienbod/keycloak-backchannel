@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 
-namespace Api;
+namespace DPoPApi;
 
 /// <summary>
 /// Default implementation of the replay cache using IDistributedCache

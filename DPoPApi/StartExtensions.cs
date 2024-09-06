@@ -4,7 +4,7 @@ using Microsoft.IdentityModel.Logging;
 using Microsoft.OpenApi.Models;
 using Serilog;
 
-namespace Api;
+namespace DPoPApi;
 
 internal static class StartExtensions
 {

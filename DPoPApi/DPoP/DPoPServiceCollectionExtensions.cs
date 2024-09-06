@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 
-namespace Api;
+namespace DPoPApi;
 
 static class DPoPServiceCollectionExtensions
 {

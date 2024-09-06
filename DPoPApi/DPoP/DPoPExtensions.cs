@@ -4,7 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 
-namespace Api;
+namespace DPoPApi;
 
 /// <summary>
 /// Extensions methods for DPoP
