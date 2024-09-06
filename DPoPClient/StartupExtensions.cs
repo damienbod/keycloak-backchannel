@@ -92,9 +92,9 @@ internal static class StartupExtensions
             options.DPoPJsonWebKey = JsonSerializer.Serialize(jwk);
         });
 
-        services.AddUserAccessTokenHttpClient(authConfiguration["ApiClientId"], configureClient: client =>
+        services.AddUserAccessTokenHttpClient(authConfiguration["ApiClientId"]!, configureClient: client =>
         {
-            client.BaseAddress = new Uri(authConfiguration["ApiUrl"]);
+            client.BaseAddress = new Uri(authConfiguration["ApiUrl"]!);
         });
 
         services.AddRazorPages();
