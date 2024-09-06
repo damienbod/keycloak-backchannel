@@ -1,5 +1,5 @@
-using Serilog;
 using DPoPClient;
+using Serilog;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()

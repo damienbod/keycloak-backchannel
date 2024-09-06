@@ -1,6 +1,3 @@
-using Aspire.Hosting;
-using Projects;
-
 var builder = DistributedApplication.CreateBuilder(args);
 
 var userName = builder.AddParameter("userName");

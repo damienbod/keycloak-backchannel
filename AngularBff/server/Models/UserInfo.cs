@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace AngularBff.Server.Models;
+﻿namespace AngularBff.Server.Models;
 
 public class UserInfo
 {

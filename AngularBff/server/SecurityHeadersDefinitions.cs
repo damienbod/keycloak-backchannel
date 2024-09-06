@@ -1,4 +1,4 @@
-﻿﻿namespace AngularBff.Server;
+﻿namespace AngularBff.Server;
 
 public static class SecurityHeadersDefinitions
 {
