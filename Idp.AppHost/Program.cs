@@ -1,4 +1,5 @@
 using Aspire.Hosting;
+using Projects;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
@@ -33,6 +34,15 @@ builder.AddProject<Projects.RazorPagePar>("razorpagepar")
 
 builder.AddProject<Projects.AngularBff>("angularbff")
     .WithExternalHttpEndpoints()
+    .WithReference(keycloak);
+
+var dpopapi = builder.AddProject<Projects.DPoPApi>("dpopapi")
+    .WithExternalHttpEndpoints()
+    .WithReference(keycloak);
+
+builder.AddProject<Projects.DPoPClient>("dpopclient")
+    .WithExternalHttpEndpoints()
+    .WithReference(dpopapi)
     .WithReference(keycloak);
 
 builder.Build().Run();
