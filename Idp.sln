@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularBff", "AngularBff\se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPoPClient", "DPoPClient\DPoPClient.csproj", "{DD8D93FD-0173-43A9-85B0-04F99F23CC60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPoPApi", "DPoPApi\DPoPApi.csproj", "{057937F3-D877-4250-8CF8-6EF858F5F38B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{DD8D93FD-0173-43A9-85B0-04F99F23CC60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD8D93FD-0173-43A9-85B0-04F99F23CC60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD8D93FD-0173-43A9-85B0-04F99F23CC60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{057937F3-D877-4250-8CF8-6EF858F5F38B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{057937F3-D877-4250-8CF8-6EF858F5F38B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{057937F3-D877-4250-8CF8-6EF858F5F38B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{057937F3-D877-4250-8CF8-6EF858F5F38B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
