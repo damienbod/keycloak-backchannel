@@ -13,7 +13,6 @@ internal static class StartExtensions
     {
         var services = builder.Services;
         var configuration = builder.Configuration;
-        _env = builder.Environment;
 
         var stsServer = configuration["StsServer"];
 
