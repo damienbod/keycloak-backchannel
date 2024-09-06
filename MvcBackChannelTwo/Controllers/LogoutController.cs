@@ -101,7 +101,7 @@ public class LogoutController : Controller
     private async Task<ClaimsPrincipal> ValidateJwt(string jwt)
     {
         var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(
-           _httpClient, _optionsAuthConfiguration.StsServerIdentityUrl);
+           _httpClient, _optionsAuthConfiguration.IdentityProviderUrl);
 
         var keys = new List<SecurityKey>();
         foreach (var webKey in disco.KeySet!.Keys)

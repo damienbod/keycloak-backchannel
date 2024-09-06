@@ -30,7 +30,7 @@ internal static class StartExtensions
         .AddCookie()
         .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
         {
-            options.Authority = authConfiguration["StsServerIdentityUrl"];
+            options.Authority = authConfiguration["IdentityProviderUrl"];
             options.ClientSecret = authConfiguration["ClientSecret"];
             options.ClientId = authConfiguration["Audience"];
             options.ResponseType = OpenIdConnectResponseType.Code;

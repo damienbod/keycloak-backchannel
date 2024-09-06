@@ -8,18 +8,17 @@ namespace DPoPApi;
 
 internal static class StartExtensions
 {
-    private static IWebHostEnvironment? _env;
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
         var services = builder.Services;
         var configuration = builder.Configuration;
 
-        var stsServer = configuration["StsServer"];
+        var authConfiguration = configuration.GetSection("AuthConfiguration");
 
         services.AddAuthentication("dpoptokenscheme")
             .AddJwtBearer("dpoptokenscheme", options =>
             {
-                options.Authority = stsServer;
+                options.Authority = authConfiguration["IdentityProviderUrl"];
                 options.TokenValidationParameters.ValidateAudience = false;
                 options.MapInboundClaims = false;
 
@@ -44,7 +43,7 @@ internal static class StartExtensions
                 Description = "Enter JWT Bearer token **_only_**",
                 In = ParameterLocation.Header,
                 Type = SecuritySchemeType.Http,
-                Scheme = "bearer", // must be lower case
+                Scheme = JwtBearerDefaults.AuthenticationScheme,
                 BearerFormat = "JWT",
                 Reference = new OpenApiReference
                 {
@@ -90,9 +89,9 @@ internal static class StartExtensions
         }
 
         app.UseSecurityHeaders(SecurityHeadersDefinitions
-            .GetHeaderPolicyCollection(_env!.IsDevelopment()));
+            .GetHeaderPolicyCollection(app.Environment.IsDevelopment()));
 
-        if (_env!.IsDevelopment())
+        if (app.Environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
 

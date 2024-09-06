@@ -45,7 +45,7 @@ public class HomeController : Controller
 
         var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(
             tokenclient,
-            _authConfiguration.StsServerIdentityUrl);
+            _authConfiguration.IdentityProviderUrl);
 
         if (disco.IsError)
         {
