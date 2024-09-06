@@ -45,6 +45,8 @@ internal static class StartupExtensions
             options.ResponseMode = "query";
             options.UsePkce = true;
 
+            options.PushedAuthorizationBehavior = PushedAuthorizationBehavior.Require;
+
             options.Scope.Clear();
             options.Scope.Add("openid");
             options.Scope.Add("profile");
