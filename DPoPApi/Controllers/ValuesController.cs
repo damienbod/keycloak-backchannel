@@ -18,10 +18,10 @@ public class ValuesController : Controller
 
         var jsonResult = new JsonResult(new { scheme, proofToken, claims });
 
-        return new string[]
-        {
+        return
+        [
             "data 1 from the api protected using OAuth DPoP",
             "data 2 from the api"
-        };
+        ];
     }
 }
