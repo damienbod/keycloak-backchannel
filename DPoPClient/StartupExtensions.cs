@@ -1,8 +1,10 @@
+using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.Security.Cryptography.X509Certificates;
@@ -12,7 +14,6 @@ namespace DPoPClient;
 
 internal static class StartupExtensions
 {
-
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
         var services = builder.Services;
@@ -38,7 +39,7 @@ internal static class StartupExtensions
             options.Authority = "https://localhost:5001";
             options.ClientId = "web-dpop";
             options.ClientSecret = "ddedF4f289k$3eDa23ed0iTk4Raq&tttk23d08nhzd";
-            options.ResponseType = "code";
+            options.ResponseType = OpenIdConnectResponseType.Code;
             options.ResponseMode = "query";
             options.UsePkce = true;
 
@@ -52,8 +53,8 @@ internal static class StartupExtensions
 
             options.TokenValidationParameters = new TokenValidationParameters
             {
-                NameClaimType = "name",
-                RoleClaimType = "role"
+                NameClaimType = JwtClaimTypes.Name,
+                RoleClaimType = JwtClaimTypes.Role,
             };
         });
 
