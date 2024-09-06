@@ -30,7 +30,7 @@ internal static class StartExtensions
         services.AddAuthorization(options =>
             options.AddPolicy("protectedScope", policy =>
             {
-                policy.RequireClaim("scope", "scope-dpop");
+                policy.RequireClaim("azp", "web-dpop");
             })
         );
 
