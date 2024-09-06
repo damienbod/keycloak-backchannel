@@ -22,7 +22,7 @@ internal static class StartExtensions
                 options.TokenValidationParameters.ValidateAudience = false;
                 options.MapInboundClaims = false;
 
-                options.TokenValidationParameters.ValidTypes = ["at+jwt"];
+                options.TokenValidationParameters.ValidTypes = ["JWT"]; //["at+jwt"];
             });
 
         services.ConfigureDPoPTokensForScheme(scheme);

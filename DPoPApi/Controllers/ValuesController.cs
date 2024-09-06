@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DPoPApi.Controllers;
 
-[Authorize(Policy = "protectedScope")]
+[Authorize(Policy = "protectedScope", AuthenticationSchemes = "dpoptokenscheme")]
 [Route("api/[controller]")]
 public class ValuesController : Controller
 {
