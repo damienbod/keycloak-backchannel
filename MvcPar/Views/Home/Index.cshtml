@@ -1,0 +1,17 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<p>@Model</p>
+
+<br />
+
+@if (User.Identity!.IsAuthenticated)
+{
+    <h1>Logged in as: @User.Identity.Name</h1>
+}
+else
+{
+    <h1>Not Logged In</h1>
+}

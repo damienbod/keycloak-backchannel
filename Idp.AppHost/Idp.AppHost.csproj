@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>24019063-a7e9-49e0-9a6e-9af3820bba61</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.0" />
+    <PackageReference Include="Aspire.Hosting.Redis" Version="8.2.0" />
+    <PackageReference Include="Keycloak.AuthServices.Aspire.Hosting" Version="0.1.0" />
+    <PackageReference Include="System.IO.Hashing" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AngularBff\server\AngularBff.csproj" />
+    <ProjectReference Include="..\DPoPApi\DPoPApi.csproj" />
+    <ProjectReference Include="..\DPoPClient\DPoPClient.csproj" />
+    <ProjectReference Include="..\MvcBackChannelTwo\MvcBackChannelTwo.csproj" />
+    <ProjectReference Include="..\MvcPar\MvcPar.csproj" />
+    <ProjectReference Include="..\RazorPagePar\RazorPagePar.csproj" />
+  </ItemGroup>
+
+</Project>
