@@ -14,9 +14,9 @@ internal static class StartExtensions
         var configuration = builder.Configuration;
 
         var authConfiguration = configuration.GetSection("AuthConfiguration");
-
-        services.AddAuthentication("dpoptokenscheme")
-            .AddJwtBearer("dpoptokenscheme", options =>
+        var scheme = "dpoptokenscheme";
+        services.AddAuthentication(scheme)
+            .AddJwtBearer(scheme, options =>
             {
                 options.Authority = authConfiguration["IdentityProviderUrl"];
                 options.TokenValidationParameters.ValidateAudience = false;
@@ -25,7 +25,7 @@ internal static class StartExtensions
                 options.TokenValidationParameters.ValidTypes = ["at+jwt"];
             });
 
-        services.ConfigureDPoPTokensForScheme("dpoptokenscheme");
+        services.ConfigureDPoPTokensForScheme(scheme);
 
         services.AddAuthorization(options =>
             options.AddPolicy("protectedScope", policy =>
