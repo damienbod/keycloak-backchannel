@@ -20,6 +20,8 @@ internal static class StartupExtensions
         var configuration = builder.Configuration;
         var env = builder.Environment;
 
+        var authConfiguration = configuration.GetSection("AuthConfiguration");
+
         services.AddAuthentication(options =>
         {
             options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -36,9 +38,9 @@ internal static class StartupExtensions
         })
         .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
         {
-            options.Authority = "https://localhost:5001";
-            options.ClientId = "web-dpop";
-            options.ClientSecret = "ddedF4f289k$3eDa23ed0iTk4Raq&tttk23d08nhzd";
+            options.Authority = authConfiguration["IdentityProviderUrl"];
+            options.ClientId = authConfiguration["ClientId"];
+            options.ClientSecret = authConfiguration["ClientSecret"];
             options.ResponseType = OpenIdConnectResponseType.Code;
             options.ResponseMode = "query";
             options.UsePkce = true;
@@ -58,10 +60,8 @@ internal static class StartupExtensions
             };
         });
 
-        var privatePem = File.ReadAllText(Path.Combine(env.ContentRootPath,
-            "ecdsa384-private.pem"));
-        var publicPem = File.ReadAllText(Path.Combine(env.ContentRootPath,
-            "ecdsa384-public.pem"));
+        var privatePem = File.ReadAllText(Path.Combine(env.ContentRootPath, "ecdsa384-private.pem"));
+        var publicPem = File.ReadAllText(Path.Combine(env.ContentRootPath, "ecdsa384-public.pem"));
         var ecdsaCertificate = X509Certificate2.CreateFromPem(publicPem, privatePem);
         var ecdsaCertificateKey = new ECDsaSecurityKey(ecdsaCertificate.GetECDsaPrivateKey());
 
@@ -90,9 +90,9 @@ internal static class StartupExtensions
             options.DPoPJsonWebKey = JsonSerializer.Serialize(jwk);
         });
 
-        services.AddUserAccessTokenHttpClient("dpop-api-client", configureClient: client =>
+        services.AddUserAccessTokenHttpClient(authConfiguration["ApiClientId"], configureClient: client =>
         {
-            client.BaseAddress = new Uri("https://localhost:5005");
+            client.BaseAddress = new Uri(authConfiguration["ApiUrl"]);
         });
 
         services.AddRazorPages();
