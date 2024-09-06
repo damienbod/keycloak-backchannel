@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -8,7 +10,7 @@ using System.Text.Json;
 
 namespace DPoPClient;
 
-internal static class HostingExtensions
+internal static class StartupExtensions
 {
     private static IWebHostEnvironment? _env;
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
@@ -19,10 +21,10 @@ internal static class HostingExtensions
 
         services.AddAuthentication(options =>
         {
-            options.DefaultScheme = "cookie";
-            options.DefaultChallengeScheme = "oidc";
+            options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
         })
-        .AddCookie("cookie", options =>
+        .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
         {
             options.ExpireTimeSpan = TimeSpan.FromHours(8);
             options.SlidingExpiration = false;
@@ -31,7 +33,7 @@ internal static class HostingExtensions
                 await e.HttpContext.RevokeRefreshTokenAsync();
             };
         })
-        .AddOpenIdConnect("oidc", options =>
+        .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
         {
             options.Authority = "https://localhost:5001";
             options.ClientId = "web-dpop";
