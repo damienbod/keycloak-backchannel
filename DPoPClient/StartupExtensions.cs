@@ -67,10 +67,8 @@ internal static class StartupExtensions
         var ecdsaCertificate = X509Certificate2.CreateFromPem(publicPem, privatePem);
         var ecdsaCertificateKey = new ECDsaSecurityKey(ecdsaCertificate.GetECDsaPrivateKey());
 
-        //var privatePem = File.ReadAllText(Path.Combine(_environment.ContentRootPath, 
-        //    "rsa256-private.pem"));
-        //var publicPem = File.ReadAllText(Path.Combine(_environment.ContentRootPath, 
-        //    "rsa256-public.pem"));
+        //var privatePem = File.ReadAllText(Path.Combine(_environment.ContentRootPath, "rsa256-private.pem"));
+        //var publicPem = File.ReadAllText(Path.Combine(_environment.ContentRootPath, "rsa256-public.pem"));
         //var rsaCertificate = X509Certificate2.CreateFromPem(publicPem, privatePem);
         //var rsaCertificateKey = new RsaSecurityKey(rsaCertificate.GetRSAPrivateKey());
 
