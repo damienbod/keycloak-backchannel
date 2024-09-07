@@ -4,6 +4,10 @@
 
 ![Overview](https://github.com/damienbod/keycloak-backchannel/blob/main/images/oauth-par-keycloak_01.png)
 
+[Implement OpenID Connect Back-Channel Logout using ASP.NET Core, Keycloak and .NET Aspire](https://damienbod.com)
+
+![Overview](https://github.com/damienbod/keycloak-backchannel/blob/main/images/back-channel-keycloak_01.png)
+
 ## Links
 
 https://learn.microsoft.com/en-us/dotnet/aspire/
