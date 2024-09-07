@@ -20,7 +20,8 @@ internal static class StartExtensions
             .AddJwtBearer(scheme, options =>
             {
                 options.Authority = authConfiguration["IdentityProviderUrl"];
-                options.TokenValidationParameters.ValidateAudience = false;
+                options.TokenValidationParameters.ValidateAudience = true;
+                options.Audience = authConfiguration["Audience"];
                 options.MapInboundClaims = false;
 
                 options.TokenValidationParameters.ValidTypes = ["JWT"];
