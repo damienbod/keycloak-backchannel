@@ -21,6 +21,9 @@
     <ProjectReference Include="..\MvcBackChannelTwo\MvcBackChannelTwo.csproj" />
     <ProjectReference Include="..\MvcPar\MvcPar.csproj" />
     <ProjectReference Include="..\RazorPagePar\RazorPagePar.csproj" />
+    <ProjectReference Include="..\AngularBff\server\AngularBff.csproj" />
+    <ProjectReference Include="..\DPoPApi\DPoPApi.csproj" />
+    <ProjectReference Include="..\DPoPClient\DPoPClient.csproj" />
   </ItemGroup>
 
 </Project>

@@ -33,4 +33,14 @@ builder.AddProject<Projects.AngularBff>("angularbff")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 
+var dpopapi = builder.AddProject<Projects.DPoPApi>("dpopapi")
+    .WithExternalHttpEndpoints()
+    .WithReference(keycloak);
+
+builder.AddProject<Projects.DPoPClient>("dpopclient")
+    .WithExternalHttpEndpoints()
+    .WithReference(dpopapi)
+    .WithReference(keycloak);
+
+
 builder.Build().Run();
