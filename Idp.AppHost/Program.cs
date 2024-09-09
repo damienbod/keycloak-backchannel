@@ -1,3 +1,5 @@
+using Aspire.Hosting;
+
 var builder = DistributedApplication.CreateBuilder(args);
 
 var userName = builder.AddParameter("userName");
@@ -25,12 +27,15 @@ var mvcbackchanneltwo = builder.AddProject<Projects.MvcBackChannelTwo>("mvcbackc
     .WithReference(keycloak)
     .WithReference(cache);
 
-builder.AddProject<Projects.RazorPagePar>("razorpagepar")
+builder.AddProject<Projects.AngularBff>("angularbff")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 
-builder.AddProject<Projects.AngularBff>("angularbff")
+var elasticsearch = builder.AddElasticsearch("elasticsearch", password: password);
+
+builder.AddProject<Projects.RazorPagePar>("razorpagepar")
     .WithExternalHttpEndpoints()
+    .WithReference(elasticsearch)
     .WithReference(keycloak);
 
 builder.Build().Run();
