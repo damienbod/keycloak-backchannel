@@ -39,3 +39,5 @@ https://www.nutfieldsecurity.com/posts/Implement-SSO-With-Keycloak
 https://datatracker.ietf.org/doc/html/rfc9449
 
 https://learn.microsoft.com/en-us/dotnet/aspire/search/elasticsearch-integration
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
