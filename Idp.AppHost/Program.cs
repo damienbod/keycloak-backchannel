@@ -35,12 +35,6 @@ builder.AddProject<Projects.AngularBff>("angularbff")
 var elasticsearch = builder.AddElasticsearch("elasticsearch", password: passwordElastic)
     .WithDataVolume()
     .RunElasticWithHttpsDevCertificate(port: 9200);
-    //.WithEnvironment("xpack.security.http.ssl.enabled", "true")
-    //.WithEnvironment("xpack.security.http.ssl.keystore.path", "http_ca.crt")
-    //.WithHttpsEndpoint(port: 9200, targetPort: 9200)
-    // either [xpack.security.http.ssl.keystore.path],
-    // or both [xpack.security.http.ssl.key] and [xpack.security.http.ssl.certificate]"
-    
 
 builder.AddProject<Projects.RazorPagePar>("razorpagepar")
     .WithExternalHttpEndpoints()
