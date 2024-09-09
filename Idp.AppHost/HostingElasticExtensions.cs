@@ -37,12 +37,6 @@ public static class HostingElasticExtensions
                     .WithBindMount(bindSource, DEV_CERT_DIR, isReadOnly: false);
             }
 
-            //.WithEnvironment("xpack.security.http.ssl.enabled", "true")
-            //.WithEnvironment("xpack.security.http.ssl.keystore.path", "http_ca.crt")
-            //.WithHttpsEndpoint(port: 9200, targetPort: 9200)
-            // either [xpack.security.http.ssl.keystore.path],
-            // or both [xpack.security.http.ssl.key] and [xpack.security.http.ssl.certificate]"
-
             builder
                 .WithEnvironment("xpack.security.http.ssl.enabled", "true")
                 .WithEnvironment("xpack.security.http.ssl.certificate", $"{DEV_CERT_DIR}/dev-cert.pem")
