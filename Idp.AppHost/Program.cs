@@ -13,7 +13,7 @@ var keycloak = builder.AddKeycloakContainer("keycloak",
     // IMPORTANT: use this command ONLY in local development environment!
     .WithArgs("--spi-connections-http-client-default-disable-trust-manager=true")
     .WithDataVolume()
-    .RunWithHttpsDevCertificate(port: 8081);
+    .RunKeycloakWithHttpsDevCertificate(port: 8081);
 
 var cache = builder.AddRedis("cache", 6379)
     .WithDataVolume();
@@ -33,12 +33,14 @@ builder.AddProject<Projects.AngularBff>("angularbff")
     .WithReference(keycloak);
 
 var elasticsearch = builder.AddElasticsearch("elasticsearch", password: passwordElastic)
-    .WithEnvironment("xpack.security.http.ssl.enabled", "true")
-    .WithEnvironment("xpack.security.http.ssl.keystore.path", "http_ca.crt")
-    .WithHttpsEndpoint(port: 9200, targetPort: 9200)
+    .WithDataVolume()
+    .RunElasticWithHttpsDevCertificate(port: 9200);
+    //.WithEnvironment("xpack.security.http.ssl.enabled", "true")
+    //.WithEnvironment("xpack.security.http.ssl.keystore.path", "http_ca.crt")
+    //.WithHttpsEndpoint(port: 9200, targetPort: 9200)
     // either [xpack.security.http.ssl.keystore.path],
     // or both [xpack.security.http.ssl.key] and [xpack.security.http.ssl.certificate]"
-    .WithDataVolume();
+    
 
 builder.AddProject<Projects.RazorPagePar>("razorpagepar")
     .WithExternalHttpEndpoints()

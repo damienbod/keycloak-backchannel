@@ -8,7 +8,7 @@ namespace Aspire.Hosting;
 /// Original src code:
 /// https://github.com/dotnet/aspire-samples/blob/b741f5e78a86539bc9ab12cd7f4a5afea7aa54c4/samples/Keycloak/Keycloak.AppHost/HostingExtensions.cs
 /// </summary>
-public static class HostingExtensions
+public static class HostingKeycloakExtensions
 {
     /// <summary>
     /// Injects the ASP.NET Core HTTPS developer certificate into the resource via the specified environment variables when
@@ -19,7 +19,7 @@ public static class HostingExtensions
     /// <remarks>
     /// This method <strong>does not</strong> configure an HTTPS endpoint on the resource. Use <see cref="ResourceBuilderExtensions.WithHttpsEndpoint{TResource}"/> to configure an HTTPS endpoint.
     /// </remarks>
-    public static IResourceBuilder<TResource> RunWithHttpsDevCertificate<TResource>(this IResourceBuilder<TResource> builder, string certFileEnv, string certKeyFileEnv)
+    public static IResourceBuilder<TResource> RunKeycloakWithHttpsDevCertificate<TResource>(this IResourceBuilder<TResource> builder, string certFileEnv, string certKeyFileEnv)
         where TResource : IResourceWithEnvironment
     {
         const string DEV_CERT_DIR = "/dev-certs";
@@ -28,7 +28,7 @@ public static class HostingExtensions
         {
             // Export the ASP.NET Core HTTPS development certificate & private key to PEM files, bind mount them into the container
             // and configure it to use them via the specified environment variables.
-            var (certPath, _) = ExportDevCertificate(builder.ApplicationBuilder);
+            var (certPath, _) = ExportKeycloakDevCertificate(builder.ApplicationBuilder);
             var bindSource = Path.GetDirectoryName(certPath) ?? throw new UnreachableException();
 
             if (builder.Resource is ContainerResource containerResource)
@@ -56,14 +56,14 @@ public static class HostingExtensions
     /// https://learn.microsoft.com/aspnet/core/security/enforcing-ssl</see>
     /// for more information on the ASP.NET Core HTTPS development certificate.
     /// </remarks>
-    public static IResourceBuilder<KeycloakResource> RunWithHttpsDevCertificate(this IResourceBuilder<KeycloakResource> builder, int port = 8081, int targetPort = 8443)
+    public static IResourceBuilder<KeycloakResource> RunKeycloakWithHttpsDevCertificate(this IResourceBuilder<KeycloakResource> builder, int port = 8081, int targetPort = 8443)
     {
         if (builder.ApplicationBuilder.ExecutionContext.IsRunMode)
         {
             // Mount the ASP.NET Core HTTPS development certificate in the Keycloak container and configure Keycloak to it
             // via the KC_HTTPS_CERTIFICATE_FILE and KC_HTTPS_CERTIFICATE_KEY_FILE environment variables.
             builder
-                .RunWithHttpsDevCertificate("KC_HTTPS_CERTIFICATE_FILE", "KC_HTTPS_CERTIFICATE_KEY_FILE")
+                .RunKeycloakWithHttpsDevCertificate("KC_HTTPS_CERTIFICATE_FILE", "KC_HTTPS_CERTIFICATE_KEY_FILE")
                 .WithHttpsEndpoint(port: port, targetPort: targetPort)
                 .WithEnvironment("KC_HOSTNAME", "localhost")
                 // Without disabling HTTP/2 you can hit HTTP 431 Header too large errors in Keycloak.
@@ -77,7 +77,7 @@ public static class HostingExtensions
         return builder;
     }
 
-    private static (string, string) ExportDevCertificate(IDistributedApplicationBuilder builder)
+    private static (string, string) ExportKeycloakDevCertificate(IDistributedApplicationBuilder builder)
     {
         // Exports the ASP.NET Core HTTPS development certificate & private key to PEM files using 'dotnet dev-certs https' to a temporary
         // directory and returns the path.
