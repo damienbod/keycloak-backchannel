@@ -18,6 +18,8 @@ internal static class StartExtensions
 
         services.Configure<AuthConfiguration>(configuration.GetSection("AuthConfiguration"));
 
+        builder.AddElasticsearchClient("elasticsearch");
+
         var authConfiguration = configuration.GetSection("AuthConfiguration");
 
         services.AddHttpClient();
