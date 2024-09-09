@@ -28,7 +28,7 @@ public static class HostingElasticExtensions
         {
             // Export the ASP.NET Core HTTPS development certificate & private key to PEM files, bind mount them into the container
             // and configure it to use them via the specified environment variables.
-            var (certPath, certKeyExportPath) = ExportElasticDevCertificate(builder.ApplicationBuilder);
+            var (certPath, _) = ExportElasticDevCertificate(builder.ApplicationBuilder);
             var bindSource = Path.GetDirectoryName(certPath) ?? throw new UnreachableException();
 
             if (builder.Resource is ContainerResource containerResource)
