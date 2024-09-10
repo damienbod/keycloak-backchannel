@@ -2,6 +2,8 @@
 using Elastic.Transport;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
+using System.Configuration;
 
 namespace RazorPagePar.Pages;
 
@@ -9,6 +11,7 @@ namespace RazorPagePar.Pages;
 public class IndexModel : PageModel
 {
     private readonly ElasticsearchClient _elasticsearchClient;
+    private readonly IConfiguration _configuration;
 
     public class Person
     {
@@ -16,15 +19,16 @@ public class IndexModel : PageModel
         public required string LastName { get; set; }
     }
 
-    public IndexModel(ElasticsearchClient elasticsearchClient)
+    public IndexModel(ElasticsearchClient elasticsearchClient, IConfiguration configuration)
     {
         _elasticsearchClient = elasticsearchClient;
+        _configuration = configuration;
     }
     public async Task OnGetAsync()
     {
-        // TODO read from secrets
-        var settings = new ElasticsearchClientSettings(new Uri("https://localhost:9200"))
-            .Authentication(new BasicAuthentication("elastic", "Password1!"));
+        var settings = new ElasticsearchClientSettings(new Uri(_configuration["ElasearchUrl"]!))
+            .Authentication(new BasicAuthentication(_configuration["ElasticsearchUserName"]!, 
+                _configuration["ElasearchPassword"]!));
 
         var client = new ElasticsearchClient(settings);
 
