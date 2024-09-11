@@ -1,6 +1,6 @@
-﻿using ElasticsearchAuditTrail.ViewModels;
-using AuditTrail;
+﻿using AuditTrail;
 using AuditTrail.Model;
+using ElasticsearchAuditTrail.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ElasticsearchAuditTrail.Controllers;
