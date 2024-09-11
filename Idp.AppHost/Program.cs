@@ -40,7 +40,7 @@ var elasticsearch = builder.AddElasticsearch("elasticsearch", password: password
     .WithDataVolume()
     .RunElasticWithHttpsDevCertificate(port: 9200);
 
-builder.AddProject<Projects.RazorPagePar>("elasticsearchaudittrail")
+builder.AddProject<Projects.ElasticsearchAuditTrail>("elasticsearchaudittrail")
     .WithExternalHttpEndpoints()
     .WithReference(elasticsearch);
 
