@@ -32,13 +32,16 @@ builder.AddProject<Projects.AngularBff>("angularbff")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 
+builder.AddProject<Projects.RazorPagePar>("razorpagepar")
+    .WithExternalHttpEndpoints()
+    .WithReference(keycloak);
+
 var elasticsearch = builder.AddElasticsearch("elasticsearch", password: passwordElastic)
     .WithDataVolume()
     .RunElasticWithHttpsDevCertificate(port: 9200);
 
-builder.AddProject<Projects.RazorPagePar>("razorpagepar")
+builder.AddProject<Projects.RazorPagePar>("elasticsearchaudittrail")
     .WithExternalHttpEndpoints()
-    .WithReference(elasticsearch)
-    .WithReference(keycloak);
+    .WithReference(elasticsearch);
 
 builder.Build().Run();
