@@ -2,6 +2,8 @@
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 var indexPerMonth = false;
 var amountOfPreviousIndicesUsedInAlias = 3;
 

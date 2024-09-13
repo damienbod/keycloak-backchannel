@@ -15,6 +15,8 @@ internal static class StartupExtensions
 {
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
+        builder.AddServiceDefaults();
+
         var services = builder.Services;
         var configuration = builder.Configuration;
 
