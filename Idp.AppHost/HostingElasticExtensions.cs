@@ -64,6 +64,8 @@ public static class HostingElasticExtensions
             Directory.Delete(tempDir, recursive: true);
         }
 
+        Directory.CreateDirectory(tempDir);
+
         var exportProcess = Process.Start("dotnet", $"dev-certs https --export-path \"{certExportPath}\" --format Pem --no-password");
 
         var exited = exportProcess.WaitForExit(TimeSpan.FromSeconds(5));
