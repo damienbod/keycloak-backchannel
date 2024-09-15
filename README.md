@@ -8,6 +8,10 @@
 
 ![Overview](https://github.com/damienbod/keycloak-backchannel/blob/main/images/back-channel-keycloak_01.png)
 
+[Using Elasticsearch with .NET Aspire](https://damienbod.com)
+
+![Overview](https://github.com/damienbod/keycloak-backchannel/blob/main/images/aspire-elastic.png)
+
 ## Links
 
 https://learn.microsoft.com/en-us/dotnet/aspire/
@@ -38,4 +42,6 @@ https://www.nutfieldsecurity.com/posts/Implement-SSO-With-Keycloak
 
 https://datatracker.ietf.org/doc/html/rfc9449
 
-https://github.com/DuendeSoftware/Samples/tree/main/IdentityServer/v7/DPoP
+https://learn.microsoft.com/en-us/dotnet/aspire/search/elasticsearch-integration
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html

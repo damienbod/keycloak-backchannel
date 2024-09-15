@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>9bdb53c8-d318-4fde-9607-1aaea916f215</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Elastic.Clients.Elasticsearch" Version="8.2.0-preview.1.24428.5" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\AuditTrail\AuditTrail.csproj" />
+    <ProjectReference Include="..\Idp.ServiceDefaults\Idp.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+</Project>
