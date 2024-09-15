@@ -1,16 +1,18 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
 var userName = builder.AddParameter("userName");
-var password = builder.AddParameter("password", secret: true);
+var passwordKeycloak = builder.AddParameter("passwordKeycloak", secret: true);
+var passwordElastic = builder.AddParameter("passwordElastic", secret: true);
 
 var keycloak = builder.AddKeycloakContainer("keycloak",
-            userName: userName, password: password, port: 8080)
+            userName: userName, password: passwordKeycloak, port: 8080)
     .WithArgs("--features=preview")
-    // for more details regarding disable-trust-manager see https://www.keycloak.org/server/outgoinghttp#_client_configuration_command
+    // for more details regarding disable-trust-manager
+    // see https://www.keycloak.org/server/outgoinghttp#_client_configuration_command
     // IMPORTANT: use this command ONLY in local development environment!
     .WithArgs("--spi-connections-http-client-default-disable-trust-manager=true")
     .WithDataVolume()
-    .RunWithHttpsDevCertificate(port: 8081);
+    .RunKeycloakWithHttpsDevCertificate(port: 8081);
 
 var cache = builder.AddRedis("cache", 6379)
     .WithDataVolume();
@@ -25,12 +27,20 @@ var mvcbackchanneltwo = builder.AddProject<Projects.MvcBackChannelTwo>("mvcbackc
     .WithReference(keycloak)
     .WithReference(cache);
 
+builder.AddProject<Projects.AngularBff>("angularbff")
+    .WithExternalHttpEndpoints()
+    .WithReference(keycloak);
+
 builder.AddProject<Projects.RazorPagePar>("razorpagepar")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak);
 
-builder.AddProject<Projects.AngularBff>("angularbff")
+var elasticsearch = builder.AddElasticsearch("elasticsearch", password: passwordElastic)
+    .WithDataVolume()
+    .RunElasticWithHttpsDevCertificate(port: 9200);
+
+builder.AddProject<Projects.ElasticsearchAuditTrail>("elasticsearchaudittrail")
     .WithExternalHttpEndpoints()
-    .WithReference(keycloak);
+    .WithReference(elasticsearch);
 
 builder.Build().Run();
