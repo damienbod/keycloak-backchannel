@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticsearchAuditTrail", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuditTrail", "AuditTrail\AuditTrail.csproj", "{1BDC38A8-C238-45B3-96E5-70C1B19816CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPoPApi", "DPoPApi\DPoPApi.csproj", "{D7CC7827-A606-4A60-9787-24D304515A28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPoPClient", "DPoPClient\DPoPClient.csproj", "{E8E64420-E522-41C6-9E49-BEF195620603}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +65,14 @@ Global
 		{1BDC38A8-C238-45B3-96E5-70C1B19816CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BDC38A8-C238-45B3-96E5-70C1B19816CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BDC38A8-C238-45B3-96E5-70C1B19816CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7CC7827-A606-4A60-9787-24D304515A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7CC7827-A606-4A60-9787-24D304515A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7CC7827-A606-4A60-9787-24D304515A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7CC7827-A606-4A60-9787-24D304515A28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8E64420-E522-41C6-9E49-BEF195620603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8E64420-E522-41C6-9E49-BEF195620603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8E64420-E522-41C6-9E49-BEF195620603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8E64420-E522-41C6-9E49-BEF195620603}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

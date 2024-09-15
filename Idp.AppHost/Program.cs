@@ -52,5 +52,4 @@ builder.AddProject<Projects.DPoPClient>("dpopclient")
     .WithReference(dpopapi)
     .WithReference(keycloak);
 
-
 builder.Build().Run();
