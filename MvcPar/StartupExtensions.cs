@@ -77,6 +77,8 @@ internal static class StartupExtensions
 
     public static WebApplication ConfigurePipeline(this WebApplication app)
     {
+        app.MapDefaultEndpoints();
+
         IdentityModelEventSource.ShowPII = true;
         JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
