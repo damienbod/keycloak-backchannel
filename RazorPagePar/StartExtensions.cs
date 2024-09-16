@@ -65,6 +65,8 @@ internal static class StartExtensions
 
     public static WebApplication ConfigurePipeline(this WebApplication app)
     {
+        app.MapDefaultEndpoints();
+
         IdentityModelEventSource.ShowPII = true;
 
         app.UseSerilogRequestLogging();
