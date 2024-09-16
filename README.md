@@ -12,6 +12,10 @@
 
 ![Overview](https://github.com/damienbod/keycloak-backchannel/blob/main/images/aspire-elastic.png)
 
+## History
+
+- 2024-09-16 Updated clients, 
+
 ## Links
 
 https://learn.microsoft.com/en-us/dotnet/aspire/
