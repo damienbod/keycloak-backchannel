@@ -8,7 +8,7 @@
 
 ![Overview](https://github.com/damienbod/keycloak-backchannel/blob/main/images/back-channel-keycloak_01.png)
 
-[Using Elasticsearch with .NET Aspire](https://damienbod.com)
+[Using Elasticsearch with .NET Aspire](https://damienbod.com/2024/09/16/using-elasticsearch-with-net-aspire/)
 
 ![Overview](https://github.com/damienbod/keycloak-backchannel/blob/main/images/aspire-elastic.png)
 
