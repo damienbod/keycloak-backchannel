@@ -4,6 +4,10 @@ using System.Text;
 
 namespace Aspire.Hosting;
 
+/// <summary>
+/// Original src code:
+/// https://github.com/dotnet/aspire-samples/blob/b741f5e78a86539bc9ab12cd7f4a5afea7aa54c4/samples/Keycloak/Keycloak.AppHost/HostingExtensions.cs
+/// </summary>
 public static class HostingElasticExtensions
 {
     public static IResourceBuilder<ElasticsearchResource> RunElasticWithHttpsDevCertificate(this IResourceBuilder<ElasticsearchResource> builder, int port = 9200, int targetPort = 9200)
