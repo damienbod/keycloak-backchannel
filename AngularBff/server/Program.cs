@@ -7,10 +7,20 @@ using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
+using NetEscapades.AspNetCore.SecurityHeaders.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+
+var stsServer = builder.Configuration["OpenIDConnectSettings:Authority"];
+
+builder.Services.AddSecurityHeaderPolicies()
+    .SetPolicySelector((PolicySelectorContext ctx) =>
+    {
+        return SecurityHeadersDefinitions
+            .GetHeaderPolicyCollection(builder.Environment.IsDevelopment(), stsServer);
+    });
 
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
@@ -19,7 +29,6 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
 
 var services = builder.Services;
 var configuration = builder.Configuration;
-var env = builder.Environment;
 
 services.AddAntiforgery(options =>
 {
@@ -31,8 +40,6 @@ services.AddAntiforgery(options =>
 
 services.AddHttpClient();
 services.AddOptions();
-
-var stsServer = configuration["OpenIDConnectSettings:Authority"];
 
 services.AddAuthentication(options =>
 {
@@ -81,7 +88,7 @@ JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();
 // Do not add to deployments, for debug reasons
 IdentityModelEventSource.ShowPII = true;
 
-if (env.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     app.UseWebAssemblyDebugging();
@@ -91,8 +98,7 @@ else
     app.UseExceptionHandler("/Error");
 }
 
-app.UseSecurityHeaders(SecurityHeadersDefinitions
-    .GetHeaderPolicyCollection(env.IsDevelopment(), stsServer));
+app.UseSecurityHeaders();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
