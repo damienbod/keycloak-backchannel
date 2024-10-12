@@ -14,7 +14,7 @@
 
 ## History
 
-- 2024-09-16 Updated clients, 
+- 2024-09-16 Updated clients
 
 ## Links
 

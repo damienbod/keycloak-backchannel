@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8</TargetFramework>
+    <NuGetAudit>False</NuGetAudit>
   </PropertyGroup>
 
   <ItemGroup>

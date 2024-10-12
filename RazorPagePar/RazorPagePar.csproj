@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <UserSecretsId>e828c072-2f61-4a8f-a120-1f8ab559daa0</UserSecretsId>
+    <NuGetAudit>False</NuGetAudit>
   </PropertyGroup>
 
   <ItemGroup>
