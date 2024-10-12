@@ -11,9 +11,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.0" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.1" />
     <PackageReference Include="Aspire.Hosting.Elasticsearch" Version="8.2.0-preview.1.24428.5" />
-    <PackageReference Include="Aspire.Hosting.Redis" Version="8.2.0" />
+    <PackageReference Include="Aspire.Hosting.Redis" Version="8.2.1" />
     <PackageReference Include="Keycloak.AuthServices.Aspire.Hosting" Version="0.1.0" />
     <PackageReference Include="System.IO.Hashing" Version="8.0.0" />
   </ItemGroup>
