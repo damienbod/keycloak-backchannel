@@ -12,6 +12,7 @@ var keycloak = builder.AddKeycloakContainer("keycloak",
     // IMPORTANT: use this command ONLY in local development environment!
     .WithArgs("--spi-connections-http-client-default-disable-trust-manager=true")
     .WithDataVolume()
+    .WithLifetime(ContainerLifetime.Persistent)
     .RunKeycloakWithHttpsDevCertificate(port: 8081);
 
 var cache = builder.AddRedis("cache", 6379)
@@ -42,6 +43,7 @@ builder.AddProject<Projects.RazorPagePar>("razorpagepar")
 
 var elasticsearch = builder.AddElasticsearch("elasticsearch", password: passwordElastic)
     .WithDataVolume()
+    .WithLifetime(ContainerLifetime.Persistent)
     .RunElasticWithHttpsDevCertificate(port: 9200);
 
 builder.AddProject<Projects.ElasticsearchAuditTrail>("elasticsearchaudittrail")
