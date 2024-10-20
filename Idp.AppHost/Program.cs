@@ -12,6 +12,7 @@ var keycloak = builder.AddKeycloakContainer("keycloak",
     // IMPORTANT: use this command ONLY in local development environment!
     .WithArgs("--spi-connections-http-client-default-disable-trust-manager=true")
     .WithDataVolume()
+    .WithLifetime(ContainerLifetime.Persistent)
     .RunKeycloakWithHttpsDevCertificate(port: 8081);
 
 var cache = builder.AddRedis("cache", 6379)
@@ -20,7 +21,9 @@ var cache = builder.AddRedis("cache", 6379)
 var mvcpar = builder.AddProject<Projects.MvcPar>("mvcpar")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak)
-    .WithReference(cache);
+    .WithReference(cache)
+    .WaitFor(keycloak)
+    .WaitFor(cache);
 
 var mvcbackchanneltwo = builder.AddProject<Projects.MvcBackChannelTwo>("mvcbackchanneltwo")
     .WithExternalHttpEndpoints()
@@ -29,19 +32,24 @@ var mvcbackchanneltwo = builder.AddProject<Projects.MvcBackChannelTwo>("mvcbackc
 
 builder.AddProject<Projects.AngularBff>("angularbff")
     .WithExternalHttpEndpoints()
-    .WithReference(keycloak);
+    .WithReference(keycloak)
+    .WaitFor(keycloak)
+    .WaitFor(cache);
 
 builder.AddProject<Projects.RazorPagePar>("razorpagepar")
     .WithExternalHttpEndpoints()
-    .WithReference(keycloak);
+    .WithReference(keycloak)
+    .WaitFor(keycloak);
 
 var elasticsearch = builder.AddElasticsearch("elasticsearch", password: passwordElastic)
     .WithDataVolume()
+    .WithLifetime(ContainerLifetime.Persistent)
     .RunElasticWithHttpsDevCertificate(port: 9200);
 
 builder.AddProject<Projects.ElasticsearchAuditTrail>("elasticsearchaudittrail")
     .WithExternalHttpEndpoints()
-    .WithReference(elasticsearch);
+    .WithReference(elasticsearch)
+    .WaitFor(keycloak);
 
 var dpopapi = builder.AddProject<Projects.DPoPApi>("dpopapi")
     .WithExternalHttpEndpoints()

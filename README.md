@@ -14,10 +14,13 @@
 
 ## History
 
+- 2024-10-20 Updated packages, Aspire .NET 9
 - 2024-10-12 Updated packages
 - 2024-09-16 Updated clients
 
 ## Links
+
+https://learn.microsoft.com/en-us/dotnet/aspire/whats-new/dotnet-aspire-9-release-candidate-1
 
 https://learn.microsoft.com/en-us/dotnet/aspire/
 
