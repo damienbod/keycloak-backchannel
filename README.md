@@ -14,6 +14,7 @@
 
 ## History
 
+- 2024-10-20 Updated packages, Aspire .NET 9
 - 2024-10-12 Updated packages
 - 2024-09-16 Updated clients
 
