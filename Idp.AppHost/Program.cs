@@ -20,7 +20,9 @@ var cache = builder.AddRedis("cache", 6379)
 var mvcpar = builder.AddProject<Projects.MvcPar>("mvcpar")
     .WithExternalHttpEndpoints()
     .WithReference(keycloak)
-    .WithReference(cache);
+    .WithReference(cache)
+    .WaitFor(keycloak)
+    .WaitFor(cache);
 
 var mvcbackchanneltwo = builder.AddProject<Projects.MvcBackChannelTwo>("mvcbackchanneltwo")
     .WithExternalHttpEndpoints()
@@ -29,11 +31,14 @@ var mvcbackchanneltwo = builder.AddProject<Projects.MvcBackChannelTwo>("mvcbackc
 
 builder.AddProject<Projects.AngularBff>("angularbff")
     .WithExternalHttpEndpoints()
-    .WithReference(keycloak);
+    .WithReference(keycloak)
+    .WaitFor(keycloak)
+    .WaitFor(cache);
 
 builder.AddProject<Projects.RazorPagePar>("razorpagepar")
     .WithExternalHttpEndpoints()
-    .WithReference(keycloak);
+    .WithReference(keycloak)
+    .WaitFor(keycloak);
 
 var elasticsearch = builder.AddElasticsearch("elasticsearch", password: passwordElastic)
     .WithDataVolume()
@@ -41,6 +46,7 @@ var elasticsearch = builder.AddElasticsearch("elasticsearch", password: password
 
 builder.AddProject<Projects.ElasticsearchAuditTrail>("elasticsearchaudittrail")
     .WithExternalHttpEndpoints()
-    .WithReference(elasticsearch);
+    .WithReference(elasticsearch)
+    .WaitFor(keycloak);
 
 builder.Build().Run();
