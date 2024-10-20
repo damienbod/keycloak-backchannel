@@ -20,6 +20,8 @@
 
 ## Links
 
+https://learn.microsoft.com/en-us/dotnet/aspire/whats-new/dotnet-aspire-9-release-candidate-1
+
 https://learn.microsoft.com/en-us/dotnet/aspire/
 
 https://www.keycloak.org/
