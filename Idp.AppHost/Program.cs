@@ -53,11 +53,13 @@ builder.AddProject<Projects.ElasticsearchAuditTrail>("elasticsearchaudittrail")
 
 var dpopapi = builder.AddProject<Projects.DPoPApi>("dpopapi")
     .WithExternalHttpEndpoints()
-    .WithReference(keycloak);
+    .WithReference(keycloak)
+    .WaitFor(keycloak);
 
 builder.AddProject<Projects.DPoPClient>("dpopclient")
     .WithExternalHttpEndpoints()
     .WithReference(dpopapi)
-    .WithReference(keycloak);
+    .WithReference(keycloak)
+    .WaitFor(keycloak);
 
 builder.Build().Run();
