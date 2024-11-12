@@ -17,7 +17,7 @@
     <PackageReference Include="Aspire.Hosting.Elasticsearch" Version="9.0.0-preview.4.24511.1" />
     <PackageReference Include="Aspire.Hosting.Redis" Version="9.0.0-rc.1.24511.1" />
     <PackageReference Include="Keycloak.AuthServices.Aspire.Hosting" Version="0.1.0" />
-    <PackageReference Include="System.IO.Hashing" Version="9.0.0-rc.2.24473.5" />
+    <PackageReference Include="System.IO.Hashing" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
