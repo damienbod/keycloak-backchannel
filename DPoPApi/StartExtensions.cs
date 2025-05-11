@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.OpenApi.Models;
+using NetEscapades.AspNetCore.SecurityHeaders.Infrastructure;
 using Serilog;
 
 namespace DPoPApi;
@@ -73,6 +74,13 @@ internal static class StartExtensions
             });
         });
 
+        builder.Services.AddSecurityHeaderPolicies()
+            .SetPolicySelector((PolicySelectorContext ctx) =>
+            {
+                return SecurityHeadersDefinitions
+                    .GetHeaderPolicyCollection(builder.Environment.IsDevelopment());
+            });
+
         services.AddControllers();
 
         return builder.Build();
@@ -85,8 +93,7 @@ internal static class StartExtensions
 
         app.UseSerilogRequestLogging();
 
-        app.UseSecurityHeaders(SecurityHeadersDefinitions
-            .GetHeaderPolicyCollection(app.Environment.IsDevelopment()));
+        app.UseSecurityHeaders();
 
         if (app.Environment.IsDevelopment())
         {
