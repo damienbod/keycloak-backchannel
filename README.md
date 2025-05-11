@@ -16,6 +16,7 @@
 
 ## History
 
+- 2025-05-11 Updated packages
 - 2024-11-12 .NET 9
 - 2024-10-20 Updated packages, Aspire .NET 9
 - 2024-10-12 Updated packages
